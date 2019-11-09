@@ -11,7 +11,9 @@
     "/js/highlighter.js",
     
     "/Component/Button/PrimaryButton.js",
+    "/Component/Button/SecondaryButton.js",
     "/Component/Menu/TopMenu.js",
+    "/Component/Menu/SideMenu.js",
     "/Component/Anchor.js",
     "/Component/Code/Coding.js",
     "/Component/MainContent.js",

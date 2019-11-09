@@ -2,8 +2,12 @@
     font-family: 'Roboto', sans-serif;
     letter-spacing: 0.7px;
 }
+.sidenav{
+    background-color: rgb(15, 17, 20);
+    color: #ffffff;
+}
 
-App{
+Container{
     background-color: #232128;
     color: #ffffff;
     position: fixed;
@@ -18,20 +22,22 @@ App{
 
 TopMenu{
     z-index: 2;
-    background-color: #0f1114;
     position: absolute;
     top: 3em;
     left: 20%;
     max-width: 60%;
     border-radius: 0.2em;
 }
-
 TopMenu PrimaryButton:not(:last-child){
     border-radius: 0;
     margin-left: 0;
     margin-right: 0;
 }
 
+TopMenu PrimaryButton:first-child{
+    margin-left: 3.5em;
+    padding-left: 3em;
+}
 TopMenu PrimaryButton:last-child{
     margin-left: 0;
     margin-right: 0;
@@ -49,20 +55,38 @@ MainContent{
     padding: 1em;
 }
 
-@media all and (max-width: 699px) {
+@media all and (max-width: 945px) {
     MainContent{
         left: 0;
         right: 0;
     }
+    TopMenu PrimaryButton{
+        display: none;
+    }
     TopMenu{
-        left: 5%;
-        right: 0;
-        max-width: 90%;
+        left: 0;
+        max-width: 100%;
     }
 }
 
-.waves-effect.waves-blue .waves-ripple {
+.waves-effect.waves-red .waves-ripple {
     background-color: #93280f;
+}
+.waves-effect.waves-blue .waves-ripple {
+    background-color: rgba(0,0,0,0.3);
+}
+
+.top-menu-logo {
+    transition: transform 200ms;
+    -webkit-transition: transform 200ms;
+    -ms-transition: transform 200ms;
+    -o-transition: transform 200ms;
+    -moz-transition: transform 200ms;
+    cursor: pointer;
+}
+
+.top-menu-logo:hover{
+    transform: scale(1.1);
 }
 
 hr{
@@ -93,4 +117,16 @@ h6{
 
 b{
     color: #922a1a;
+}
+
+#git_profile{
+    width: 100%;
+    height: 200px;
+    background-image: url("/img/profile-image.jpg");
+    background-size: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: grid;
+    align-items: center;
+    justify-items: center;
 }
