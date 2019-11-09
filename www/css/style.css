@@ -22,8 +22,10 @@ TopMenu{
     position: absolute;
     top: 3em;
     left: 20%;
+    max-width: 60%;
     border-radius: 0.2em;
 }
+
 TopMenu PrimaryButton:not(:last-child){
     border-radius: 0;
     margin-left: 0;
@@ -41,10 +43,22 @@ TopMenu PrimaryButton:last-child{
 
 MainContent{
     position: absolute;
-    top: 5em;
+    top: 6em;
     left: 20%;
     right: 20%;
     padding: 1em;
+}
+
+@media all and (max-width: 699px) {
+    MainContent{
+        left: 0;
+        right: 0;
+    }
+    TopMenu{
+        left: 5%;
+        right: 0;
+        max-width: 90%;
+    }
 }
 
 .waves-effect.waves-blue .waves-ripple {
