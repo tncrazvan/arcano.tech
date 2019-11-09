@@ -71,15 +71,15 @@
                     The current repository is hosted on github.<br />
                     Here's what you need to add to your <b>pom.xml</b> file:<br />
                     <coding language="xml">&lt;repository&gt;
-        &lt;id&gt;com.github.tncrazvan.Arcano&lt;/id&gt;
-        &lt;url&gt;https://raw.githubusercontent.com/tncrazvan/Arcano/maven-repository&lt;/url&gt;
-    &lt;/repository&gt;</coding><br /><br />
-                    After that's done, all you need to do is add the dependency:<br />
-                    <coding language="xml">&lt;dependency&gt;
-        &lt;groupId&gt;com.github.tncrazvan&lt;/groupId&gt;
-        &lt;artifactId&gt;AsciiTable&lt;/artifactId&gt;
-        &lt;version&gt;1.0.0&lt;/version&gt;
-    &lt;dependency&gt;</coding><br /><br />
+    &lt;id&gt;com.github.tncrazvan.Arcano&lt;/id&gt;
+    &lt;url&gt;https://raw.githubusercontent.com/tncrazvan/Arcano/maven-repository&lt;/url&gt;
+&lt;/repository&gt;</coding><br /><br />
+                After that's done, all you need to do is add the dependency:<br />
+                <coding language="xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.github.tncrazvan&lt;/groupId&gt;
+    &lt;artifactId&gt;AsciiTable&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+&lt;dependency&gt;</coding><br /><br />
                     Now build your project once to make sure everything works (if you're using an IDE this will probably also download the sources for you).
                 </li>
                 <li class="collection-item">
@@ -88,11 +88,11 @@
                     Make a new <b>http.json</b>, this will contain a json object.<br />
                     Make sure your object defines the <b>entryPoint</b>, <b>webRoot</b>, <b>port</b> and <b>bindAddress</b> properties, like so:<br />
                     <coding language="json">{
-        "entryPoint":"index.html",
-        "webRoot": "www",
-        "port": 80,
-        "bindAddress": "::"
-    }</coding><br /><br />
+    "entryPoint":"index.html",
+    "webRoot": "www",
+    "port": 80,
+    "bindAddress": "::"
+}</coding><br /><br />
                     The <b>entryPoint</b> property defines the entry point of your application. This is relative to the <b>webRoot</b>.
                     <hr />
                     The <b>webRoot</b> property defines the root of your application. Your <b>entryPoint</b> should be located inside your <b>webRoot</b>.
@@ -105,133 +105,133 @@
                     <h6>Start your server</h6>
                     Make a new instance of the <b>Server</b> class and pass it your controller classes<br />
                     <coding language="java">package com.github.tncrazvan.helloworld;
-                        
-    import com.github.tncrazvan.arcano.Bean.Web;
-    import com.github.tncrazvan.arcano.Http.HttpController;
-    import com.github.tncrazvan.arcano.Server;
-    import java.io.IOException;
-    import java.net.URISyntaxException;
-    import java.security.NoSuchAlgorithmException;
+                    
+import com.github.tncrazvan.arcano.Bean.Web;
+import com.github.tncrazvan.arcano.Http.HttpController;
+import com.github.tncrazvan.arcano.Server;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.security.NoSuchAlgorithmException;
+
+public class HelloWorld {
     
-    public class HelloWorld {
-        
-        @Web(path = "/hello")
-        public class Hello extends HttpController{
-            @Web(path = "/")
-            public String main(){
-                return "hello world!";
-            }
+    @Web(path = "/hello")
+    public class Hello extends HttpController{
+        @Web(path = "/")
+        public String main(){
+            return "hello world!";
         }
-        
-        @Web(path = "/hello2")
-        public class Hello2 extends HttpController{
-            @Web(path = "/")
-            public String main(){
-                return "hello world 2!";
-            }
-            
-            @Web(path = "/name")
-            public String name(){
-                return "hello, my name is Arcano!";
-            }
-        }
+    }
     
-        public static void main(String[] args) throws IOException, NoSuchAlgorithmException, ClassNotFoundException, URISyntaxException {
-            Server s = new Server(
-                Hello.class,
-                Hello2.class
-            );
-            s.listen(new String[]{"/path/to/your/http.json"});
+    @Web(path = "/hello2")
+    public class Hello2 extends HttpController{
+        @Web(path = "/")
+        public String main(){
+            return "hello world 2!";
         }
-    }</coding><br /><br />
+        
+        @Web(path = "/name")
+        public String name(){
+            return "hello, my name is Arcano!";
+        }
+    }
+
+    public static void main(String[] args) throws IOException, NoSuchAlgorithmException, ClassNotFoundException, URISyntaxException {
+        Server s = new Server(
+            Hello.class,
+            Hello2.class
+        );
+        s.listen(new String[]{"/path/to/your/http.json"});
+    }
+}</coding><br /><br />
                     Now compile your application and run it with <coding language="bash">java -jar app.jar</coding><br />
                     You should get an output similar to this:<br />
                     <coding language="xml">Server started.
-    Files glued but not minified.
-    Server will minify files in background once every -100ms.
-    +-----------------+----------------------------------------------------------+
-    | Key             | Value                                                    |
-    +-----------------+----------------------------------------------------------+
-    | locale          | it_IT                                                    |
-    +-----------------+----------------------------------------------------------+
-    | timezone        | Europe/Rome                                              |
-    +-----------------+----------------------------------------------------------+
-    | port            | 80                                                       |
-    +-----------------+----------------------------------------------------------+
-    | bindAddress     | ::                                                       |
-    +-----------------+----------------------------------------------------------+
-    | webRoot         | /path/to/your/web/roob                                   |
-    +-----------------+----------------------------------------------------------+
-    | charset         | UTF-8                                                    |
-    +-----------------+----------------------------------------------------------+
-    | timeout         | 30000 milliseconds                                       |
-    +-----------------+----------------------------------------------------------+
-    | sessionTtl      | 1440 seconds                                             |
-    +-----------------+----------------------------------------------------------+
-    | cookieTtl       | 2592000 seconds                                          |
-    +-----------------+----------------------------------------------------------+
-    | cacheMaxAge     | 31536000 seconds                                         |
-    +-----------------+----------------------------------------------------------+
-    | wsMtu           | 65536 bytes                                              |
-    +-----------------+----------------------------------------------------------+
-    | httpMtu         | 65536 bytes                                              |
-    +-----------------+----------------------------------------------------------+
-    | entryPoint      | index.html                                               |
-    +-----------------+----------------------------------------------------------+
-    | minify          | -100 milliseconds                                        |
-    +-----------------+----------------------------------------------------------+
-    | threadPoolSize  | 2 Threads                                                |
-    +-----------------+----------------------------------------------------------+
-    | keepAlive       | 60000 milliseconds                                       |
-    +-----------------+----------------------------------------------------------+
-    | sendExceptions  | True                                                     |
-    +-----------------+----------------------------------------------------------+
-    | responseWrapper | False                                                    |
-    +-----------------+----------------------------------------------------------+
-    | groups          | +-----------+-------+                                    |
-    |                 | | Attribute | Value |                                    |
-    |                 | +-----------+-------+                                    |
-    |                 | | allow     | False |                                    |
-    |                 | +-----------+-------+                                    |
-    +-----------------+----------------------------------------------------------+
-    | Routes          | +----------------------------------------------+         |
-    |                 | | Path                                         |         |
-    |                 | +----------------------------------------------+         |
-    |                 | | GET/isset/file                               |         |
-    |                 | +----------------------------------------------+         |
-    |                 | | GET/set/websocketgroup                       |         |
-    |                 | +----------------------------------------------+         |
-    |                 | | GET/get/allwebsocketgroups                   |         |
-    |                 | +----------------------------------------------+         |
-    |                 | | GET/get/cookie                               |         |
-    |                 | +----------------------------------------------+         |
-    |                 | | WS/websocketgroupapplicationprograminterface |         |
-    |                 | +----------------------------------------------+         |
-    |                 | | GET/isset/cookie                             |         |
-    |                 | +----------------------------------------------+         |
-    |                 | | GET/get/file                                 |         |
-    |                 | +----------------------------------------------+         |
-    |                 | | GET/set/cookie                               |         |
-    |                 | +----------------------------------------------+         |
-    |                 | | GET/unset/cookie                             |         |
-    |                 | +----------------------------------------------+         |
-    |                 | | GET/hello                                    |         |
-    |                 | +----------------------------------------------+         |
-    |                 | | GET/hello2                                   |         |
-    |                 | +----------------------------------------------+         |
-    |                 | | GET/hello2/name                              |         |
-    |                 | +----------------------------------------------+         |
-    +-----------------+----------------------------------------------------------+</coding><br /><br />
+Files glued but not minified.
+Server will minify files in background once every -100ms.
++-----------------+----------------------------------------------------------+
+| Key             | Value                                                    |
++-----------------+----------------------------------------------------------+
+| locale          | it_IT                                                    |
++-----------------+----------------------------------------------------------+
+| timezone        | Europe/Rome                                              |
++-----------------+----------------------------------------------------------+
+| port            | 80                                                       |
++-----------------+----------------------------------------------------------+
+| bindAddress     | ::                                                       |
++-----------------+----------------------------------------------------------+
+| webRoot         | /path/to/your/web/roob                                   |
++-----------------+----------------------------------------------------------+
+| charset         | UTF-8                                                    |
++-----------------+----------------------------------------------------------+
+| timeout         | 30000 milliseconds                                       |
++-----------------+----------------------------------------------------------+
+| sessionTtl      | 1440 seconds                                             |
++-----------------+----------------------------------------------------------+
+| cookieTtl       | 2592000 seconds                                          |
++-----------------+----------------------------------------------------------+
+| cacheMaxAge     | 31536000 seconds                                         |
++-----------------+----------------------------------------------------------+
+| wsMtu           | 65536 bytes                                              |
++-----------------+----------------------------------------------------------+
+| httpMtu         | 65536 bytes                                              |
++-----------------+----------------------------------------------------------+
+| entryPoint      | index.html                                               |
++-----------------+----------------------------------------------------------+
+| minify          | -100 milliseconds                                        |
++-----------------+----------------------------------------------------------+
+| threadPoolSize  | 2 Threads                                                |
++-----------------+----------------------------------------------------------+
+| keepAlive       | 60000 milliseconds                                       |
++-----------------+----------------------------------------------------------+
+| sendExceptions  | True                                                     |
++-----------------+----------------------------------------------------------+
+| responseWrapper | False                                                    |
++-----------------+----------------------------------------------------------+
+| groups          | +-----------+-------+                                    |
+|                 | | Attribute | Value |                                    |
+|                 | +-----------+-------+                                    |
+|                 | | allow     | False |                                    |
+|                 | +-----------+-------+                                    |
++-----------------+----------------------------------------------------------+
+| Routes          | +----------------------------------------------+         |
+|                 | | Path                                         |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/isset/file                               |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/set/websocketgroup                       |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/get/allwebsocketgroups                   |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/get/cookie                               |         |
+|                 | +----------------------------------------------+         |
+|                 | | WS/websocketgroupapplicationprograminterface |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/isset/cookie                             |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/get/file                                 |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/set/cookie                               |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/unset/cookie                             |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/hello                                    |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/hello2                                   |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/hello2/name                              |         |
+|                 | +----------------------------------------------+         |
++-----------------+----------------------------------------------------------+</coding><br /><br />
                     All the fields you see in the resulting table, except for "Routes", are settings you can modify in your <b>http.json</b> file.
                     The names match exactly, so if you want to change your "threadPoolSize" property, you can do just that by defining it in your settings file.
                     For example:<br />
                     <coding language="json">{
-        "entryPoint":"index.html",
-        "webRoot": "www",
-        "port": 80,
-        "bindAddress": "::",
-        "threadPoolSize": 5
-    }</coding>
+    "entryPoint":"index.html",
+    "webRoot": "www",
+    "port": 80,
+    "bindAddress": "::",
+    "threadPoolSize": 5
+}</coding>
                 </li>
             </ul><br />
             <Footer></Footer>
@@ -259,12 +259,12 @@
                     Make a new file named "<b>http.json</b>", this json file must containt an object.
                     You'll have to define a few parameters:<br />
                     <coding language="json">{
-        "scripts":"scripts",
-        "entryPoint":"index.html",
-        "webRoot": "www",
-        "port": 80,
-        "bindAddress": "::"
-    }</coding><br /><br />    
+    "scripts":"scripts",
+    "entryPoint":"index.html",
+    "webRoot": "www",
+    "port": 80,
+    "bindAddress": "::"
+}</coding><br /><br />    
                     The <b>scripts</b> property defines the location of your <b>Http</b> and <b>WebSocket</b> scripts.
                     <hr />
                     Your <b>Http</b> scripts will be located under <b>scripts/Http</b>.
@@ -283,17 +283,17 @@
                     Everything is set, now you need to give the server some files to serve.<br />
                     Make a new file "<b>www/index.html</b>" and throw some html code in it.<br />
                     <coding language="html">&lt;!DOCTYPE html&gt;
-    &lt;html&gt;
-    &lt;head&gt;
-        &lt;meta charset='utf-8'&gt;
-        &lt;meta http-equiv='X-UA-Compatible' content='IE=edge'&gt;
-        &lt;title&gt;Arcano&lt;/title&gt;
-        &lt;meta name='viewport' content='width=device-width, initial-scale=1'&gt;
-    &lt;/head&gt;
-    &lt;body&gt;
-        &lt;div id="app"&gt;&lt;/div&gt;
-    &lt;/body&gt;
-    &lt;/html&gt;</coding><br /><br />
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset='utf-8'&gt;
+    &lt;meta http-equiv='X-UA-Compatible' content='IE=edge'&gt;
+    &lt;title&gt;Arcano&lt;/title&gt;
+    &lt;meta name='viewport' content='width=device-width, initial-scale=1'&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="app"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</coding><br /><br />
                     
                     And run your server using <coding language="bash">java -jar http.json</coding>.<br />
                     Now you should be able to access the resource "<b>http://127.0.0.1/index.html</b>".
@@ -306,11 +306,11 @@
                     Under your <b>scripts/Http</b> directory, make a new file named "<b>.js</b>".<br />
                     Inside your "<b>.js</b>" file write write the following code:<br />
                     <coding language="javascript">if(method !== "GET") //if the mthod is not "GET"
-        header("@Status",STATUS_BAD_REQUEST); //respond with "400 Bad Request" status
-    else{ //if the method is ineed "GET"
-        let f = file("../../www/index.html"); //get a file handler (JSFile class)
-        send(f.read()); //read the contents of the file and send them to the client
-    }</coding><br /><br /><br />
+    header("@Status",STATUS_BAD_REQUEST); //respond with "400 Bad Request" status
+else{ //if the method is ineed "GET"
+    let f = file("../../www/index.html"); //get a file handler (JSFile class)
+    send(f.read()); //read the contents of the file and send them to the client
+}</coding><br /><br /><br />
                     The <b>method</b> variable contains the request method of the client. You can also get the name of the method by calling 
                     <coding language="javascript">server.getClientMethod()</coding>.
                     <hr />
