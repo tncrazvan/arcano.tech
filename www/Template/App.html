@@ -21,12 +21,12 @@
                     Quick Implementation
                 </PrimaryButton>
             </li>
-            <li>
+            <!--<li>
                 <PrimaryButton state="STATE_DOCUMENTATION">
                     <i class="fa fa-book"></i>&nbsp;&nbsp;&nbsp;
                     Documentation
                 </PrimaryButton>
-            </li>
+            </li>-->
         </ul>
     </SideMenu>
     <Container>
@@ -37,7 +37,7 @@
                 <div style="align-self: center;z-index:0;min-width: 5em;">
                     <PrimaryButton state="STATE_HOME">Get Started</PrimaryButton>
                     <PrimaryButton state="STATE_QUICK">Quick Implementation</PrimaryButton>
-                    <PrimaryButton state="STATE_DOCUMENTATION">Documentation</PrimaryButton>
+                    <!--<PrimaryButton state="STATE_DOCUMENTATION">Documentation</PrimaryButton>-->
                 </div>
             </div>
         </TopMenu>
@@ -233,7 +233,8 @@
         "threadPoolSize": 5
     }</coding>
                 </li>
-            </ul>
+            </ul><br />
+            <Footer></Footer>
         </MainContent>
         <MainContent :elseif="this.state === this.STATE_QUICK">
             <h4><i class="fa fa-cubes"></i>&nbsp;&nbsp;&nbsp;Quick Implementation</h4>
@@ -330,7 +331,8 @@
                     Now you can request the resource <b>http://127.0.0.1/</b> and your server will respond with the index.html file.
                 </li>
             </ul>
+            <br />
+            <Footer></Footer>
         </MainContent>
     </Container>
-    
 </App>

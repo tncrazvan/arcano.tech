@@ -10,6 +10,7 @@
     "/js/materialize.min.js",
     "/js/highlighter.js",
     
+    "/Component/Footer.js",
     "/Component/Button/PrimaryButton.js",
     "/Component/Button/SecondaryButton.js",
     "/Component/Menu/TopMenu.js",
