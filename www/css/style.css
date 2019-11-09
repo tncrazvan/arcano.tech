@@ -19,7 +19,7 @@ App{
 TopMenu{
     z-index: 2;
     background-color: #0f1114;
-    position: fixed;
+    position: absolute;
     top: 3em;
     left: 20%;
     border-radius: 0.2em;

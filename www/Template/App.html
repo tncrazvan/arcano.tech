@@ -4,13 +4,15 @@
         <div style="display: grid;grid-template-columns: auto;" style="margin: 0">
             <img src="/img/Logo.png" class="responsive-img" style="position:absolute;top: -1.5em;left:-1.5em;width: 5em;z-index:1;"/>
             <div style="align-self: center;z-index:0;">
-                <PrimaryButton style="padding-left: 5em;left: 5px;">Get Started</PrimaryButton>
-                <PrimaryButton class="last">Documentation</PrimaryButton>
+                <PrimaryButton state="STATE_HOME" style="padding-left: 5em;left: 5px;">Get Started</PrimaryButton>
+                <PrimaryButton state="STATE_QUICK" class="last">Quick Implementation</PrimaryButton>
+                <PrimaryButton state="STATE_DOCUMENTATION" class="last">Documentation</PrimaryButton>
             </div>
         </div>
     </TopMenu>
 
-    <MainContent>
+    
+    <MainContent :if="this.state === this.STATE_HOME">
         <h4><i class="fa fa-info-circle"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 0.7em;">What is Arcano?</span></h4>
         <p>
             Arcano is a lightweight web server written in Java.<br />
@@ -61,13 +63,14 @@
     "webRoot": "www",
     "port": 80,
     "bindAddress": "::"
-}</coding><br />
-                <ul>
-                    <li>The <b>entryPoint</b> property defines the entry point of your application. This is relative to the <b>webRoot</b></li>
-                    <li>The <b>webRoot</b> property defines the root of your application. Your <b>entryPoint</b> should be located inside your <b>webRoot</b></li>
-                    <li>The <b>port</b> property defines on which port your server should be listening to (usally port 80).</li>
-                    <li>The <b>bindAddress</b> property defines on which interface the server socket should bind on. The bind <b>::</b> means the <a href="https://en.wikipedia.org/wiki/Network_socket" target="_blank" >server socket</a> should bind on all available IPv4 or IPv6 interfaces</li>
-                </ul>
+}</coding><br /><br />
+                The <b>entryPoint</b> property defines the entry point of your application. This is relative to the <b>webRoot</b>.
+                <hr />
+                The <b>webRoot</b> property defines the root of your application. Your <b>entryPoint</b> should be located inside your <b>webRoot</b>.
+                <hr />
+                The <b>port</b> property defines on which port your server should be listening to (usally port 80).
+                <hr />
+                The <b>bindAddress</b> property defines on which interface the server socket should bind on. The bind <b>::</b> means the <a href="https://en.wikipedia.org/wiki/Network_socket" target="_blank" >server socket</a> should bind on all available IPv4 or IPv6 interfaces.
             </li>
             <li class="collection-item">
                 <h6>Start your server</h6>
@@ -203,5 +206,100 @@ Server will minify files in background once every -100ms.
             </li>
         </ul>
     </MainContent>
+    <MainContent :elseif="this.state === this.STATE_QUICK">
+        <h4><i class="fa fa-cubes"></i>&nbsp;&nbsp;&nbsp;Quick Implementation</h4>
+        <p>
+            You can implement Arcano server in your project without actually having to write any Java code.<br />
+            Arcano uses <a target="__blank" href="https://en.wikipedia.org/wiki/Nashorn_(JavaScript_engine)">Nashron</a>, a JavaScript engine which allows
+            Java to run JavaScript files.<br /><br />
+            These scripts can access some Java core functinalities, such as FileSystem manipulation, MySQL database connection and most importantly a global variables
+            named "server" which gives you total control over the underlying Java HttpEvent object, which you can use to send and read data from the client, set header field, and a few utility methods.
+        </p>
 
+        <SectionTitle>How to start</SectionTitle>
+        <ul class="collection">
+            <li class="collection-item">
+                <h6>Download the compiled source</h6>
+                First of all you need to download the latest public JAR.<br />
+                <a target="__blank" href="https://github.com/tncrazvan/Arcano/tree/maven-repository" btn>download</a>
+            </li>
+            <li class="collection-item">
+                <h6>Settings file</h6>
+                All you need to do now is to make a settings file.<br />
+                Make a new file named "<b>http.json</b>", this json file must containt an object.
+                You'll have to define a few parameters:<br />
+                <coding language="json">{
+    "scripts":"scripts",
+    "entryPoint":"index.html",
+    "webRoot": "www",
+    "port": 80,
+    "bindAddress": "::"
+}</coding><br /><br />    
+                The <b>scripts</b> property defines the location of your <b>Http</b> and <b>WebSocket</b> scripts.
+                <hr />
+                Your <b>Http</b> scripts will be located under <b>scripts/Http</b>.
+                Your <b>WebSocket</b> scripts will be located under <b>scripts/WebSocket</b>.
+                <hr />
+                The <b>entryPoint</b> property defines the entry point of your application.<br />This is relative to the <b>webRoot</b>.
+                <hr />
+                The <b>webRoot</b> property defines the root of your application.<br />Your <b>entryPoint</b> should be located inside your <b>webRoot</b>.
+                <hr />
+                The <b>port</b> property defines on which port your server should be listening to (usally port 80).
+                <hr />
+                The <b>bindAddress</b> property defines on which interface the server socket should bind on. The bind <b>::</b> means the <a href="https://en.wikipedia.org/wiki/Network_socket" target="_blank" >server socket</a> should bind on all available IPv4 or IPv6 interfaces.
+            </li>
+            <li class="collection-item">
+                <h6>Run server</h6>
+                Everything is set, now you need to give the server some files to serve.<br />
+                Make a new file "<b>www/index.html</b>" and throw some html code in it.<br />
+                <coding language="html">&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+&lt;head&gt;
+    &lt;meta charset='utf-8'&gt;
+    &lt;meta http-equiv='X-UA-Compatible' content='IE=edge'&gt;
+    &lt;title&gt;Arcano&lt;/title&gt;
+    &lt;meta name='viewport' content='width=device-width, initial-scale=1'&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div id="app"&gt;&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;</coding><br /><br />
+                
+                And run your server using <coding language="bash">java -jar http.json</coding>.<br />
+                Now you should be able to access the resource "<b>http://127.0.0.1/index.html</b>".
+            </li>
+            <li class="collection-item">
+                <h6>Server scripting</h6>
+                Now your server is online, and you can serve the <b>index.html</b> file.<br />
+                Now we're gonna write a simple script that makes the server respond with the <b>index.html</b> when the resource "<b>/</b>" is requested.
+                <hr />
+                Under your <b>scripts/Http</b> directory, make a new file named "<b>.js</b>".<br />
+                Inside your "<b>.js</b>" file write write the following code:<br />
+                <coding language="javascript">if(method !== "GET") //if the mthod is not "GET"
+    header("@Status",STATUS_BAD_REQUEST); //respond with "400 Bad Request" status
+else{ //if the method is ineed "GET"
+    let f = file("../../www/index.html"); //get a file handler (JSFile class)
+    send(f.read()); //read the contents of the file and send them to the client
+}</coding><br /><br /><br />
+                The <b>method</b> variable contains the request method of the client. You can also get the name of the method by calling 
+                <coding language="javascript">server.getClientMethod()</coding>.
+                <hr />
+                The <b>header</b> function simply sets a specific header to your response.<br />
+                The "@Status" key is a special key which sets the status of your response.
+                <hr />
+                The <b>gile</b> function returns a <b>JSFile object</b> which extends Java's File class and defines 3 more 
+                methods: <br />
+                1) <coding language="javascript">read()</coding> returns the contents of the file<br />
+                2) <coding language="javascript">write(contents)</coding> writes contents to the file<br />
+                3) <coding language="javascript">exists()</coding> returns <b>true</b> if the file exists, otherwise <b>false</b>.<br />
+                You can also use all the other methods provided by the File class.<br/><br/>
+
+                <b>NOTE: </b> All paths are relative to the script working directory, which in this case is <b>scripts/Http/</b>, so in order to access the
+                <b>index.html</b> file you need to change directory accordingly. In this case you go back twice using "<b>../../</b>", change directory to 
+                "<b>www/</b>" and finally accessing the file "<b>index.html</b>".
+                <br /><br />
+                Now you can request the resource <b>http://127.0.0.1/</b> and your server will respond with the index.html file.
+            </li>
+        </ul>
+    </MainContent>
 </App>

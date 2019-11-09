@@ -7,11 +7,14 @@
     "/css/style.css",
     
     "/js/Elk/Main.js",
+    "/js/materialize.min.js",
+    "/js/highlighter.js",
+    
     "/Component/Button/PrimaryButton.js",
     "/Component/Menu/TopMenu.js",
     "/Component/Anchor.js",
     "/Component/Code/Coding.js",
-    "/js/materialize.min.js",
-    "/js/highlighter.js",
+    "/Component/MainContent.js",
+
     "/js/app.js"
 ]
