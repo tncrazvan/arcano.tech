@@ -1,0 +1,12 @@
+{
+    "minify": -100,
+    "scripts":"scripts",
+    "entryPoint":"index.html",
+    "webRoot": "www",
+    "assets": "www/assets.json",
+    "port": 80,
+    "bindAddress": "::",
+    "header": {
+        "Cache-Control": "no-store"
+    }
+}

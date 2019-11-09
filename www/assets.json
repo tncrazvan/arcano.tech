@@ -1,0 +1,17 @@
+[
+    "/css/fonts/roboto.css",
+    "/css/fontawesome.css",
+    "/css/materialize.min.css",
+    "/css/highlighter.css",
+    "/css/hopscotch.css",
+    "/css/style.css",
+    
+    "/js/Elk/Main.js",
+    "/Component/Button/PrimaryButton.js",
+    "/Component/Menu/TopMenu.js",
+    "/Component/Anchor.js",
+    "/Component/Code/Coding.js",
+    "/js/materialize.min.js",
+    "/js/highlighter.js",
+    "/js/app.js"
+]

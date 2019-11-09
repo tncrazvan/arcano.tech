@@ -1,0 +1,82 @@
+*{
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 0.7px;
+}
+
+App{
+    background-color: #232128;
+    color: #ffffff;
+    position: fixed;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    overflow-y: auto;
+}
+
+TopMenu{
+    z-index: 2;
+    background-color: #0f1114;
+    position: fixed;
+    top: 3em;
+    left: 20%;
+    border-radius: 0.2em;
+}
+TopMenu PrimaryButton:not(:last-child){
+    border-radius: 0;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+TopMenu PrimaryButton:last-child{
+    margin-left: 0;
+    margin-right: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-top-right-radius: 0.2em;
+    border-bottom-right-radius: 0.2em;
+}
+
+MainContent{
+    position: absolute;
+    top: 5em;
+    left: 20%;
+    right: 20%;
+    padding: 1em;
+}
+
+.waves-effect.waves-blue .waves-ripple {
+    background-color: #93280f;
+}
+
+hr{
+    border: 0;
+    height: 1px;
+    background-color: #2e2a38;
+}
+
+SectionTitle{
+    border-left: 0.3em solid #922a1a;
+    color: #922a1a;
+    font-size: 1em;
+    padding-left: 0.5em;
+}
+
+.collection,.collection-item{
+    background: none !important;
+    border-color: #2e2a38 !important;
+    border-radius: 0;
+}
+.collection-item{
+    font-size: 0.8em;
+}
+h6{
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+b{
+    color: #922a1a;
+}

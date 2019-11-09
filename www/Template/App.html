@@ -1,0 +1,204 @@
+<App export replace>
+
+    <TopMenu>
+        <div style="display: grid;grid-template-columns: auto;" style="margin: 0">
+            <img src="/img/Logo.png" class="responsive-img" style="position:absolute;top: -1.5em;left:-1.5em;width: 5em;z-index:1;"/>
+            <div style="align-self: center;z-index:0;">
+                <PrimaryButton style="padding-left: 5em;left: 5px;">Get Started</PrimaryButton>
+                <PrimaryButton class="last">Documentation</PrimaryButton>
+            </div>
+        </div>
+    </TopMenu>
+
+    <MainContent>
+        <h4><i class="fa fa-info-circle"></i>&nbsp;&nbsp;&nbsp;<span style="font-size: 0.7em;">What is Arcano?</span></h4>
+        <p>
+            Arcano is a lightweight web server written in Java.<br />
+            It offers a few unique features such as an MVC design pattern, a WebSocket API, 
+            a Http API and a server-side JavaScript API which allows you to script your server using JavaScript, much like NodeJS.
+        </p>
+        <SectionTitle>How to start</SectionTitle>
+        <ul class="collection">
+            <li class="collection-item">
+                <h6>Make sure you have JDK 8+ installed</h6>
+            </li>
+            <li class="collection-item">
+                <h6>Install Maven</h6>
+                In order to import the server library in your project you'll need Maven, a java dependency manager.<br />
+                You can download the latest JDK from the official oracle website.<br />
+                <a btn target="_blank" href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+            </li>
+            <li class="collection-item">
+                <h6>Make a new project</h6>
+                After making a new project in your IDE, you'll have to modify your <b>pon.xml</b> file in 
+                order to add the Arcano dependency.
+                <hr/>
+                First you need to define the repository where the library releases are published.
+                The current repository is hosted on github.<br />
+                Here's what you need to add to your <b>pom.xml</b> file:<br />
+                <coding language="xml">&lt;repository&gt;
+    &lt;id&gt;com.github.tncrazvan.Arcano&lt;/id&gt;
+    &lt;url&gt;https://raw.githubusercontent.com/tncrazvan/Arcano/maven-repository&lt;/url&gt;
+&lt;/repository&gt;</coding><br /><br />
+                After that's done, all you need to do is add the dependency:<br />
+                <coding language="xml">&lt;dependency&gt;
+    &lt;groupId&gt;com.github.tncrazvan&lt;/groupId&gt;
+    &lt;artifactId&gt;AsciiTable&lt;/artifactId&gt;
+    &lt;version&gt;1.0.0&lt;/version&gt;
+&lt;dependency&gt;</coding><br /><br />
+                Now build your project once to make sure everything works (if you're using an IDE this will probably also download the sources for you).
+            </li>
+            <li class="collection-item">
+                <h6>Settings</h6>
+                Before running your server you need to make a settings file to feed to your server.<br />
+                Make a new <b>http.json</b>, this will contain a json object.<br />
+                Make sure your object defines the <b>entryPoint</b>, <b>webRoot</b>, <b>port</b> and <b>bindAddress</b> properties, like so:<br />
+                <coding language="json">{
+    "entryPoint":"index.html",
+    "webRoot": "www",
+    "port": 80,
+    "bindAddress": "::"
+}</coding><br />
+                <ul>
+                    <li>The <b>entryPoint</b> property defines the entry point of your application. This is relative to the <b>webRoot</b></li>
+                    <li>The <b>webRoot</b> property defines the root of your application. Your <b>entryPoint</b> should be located inside your <b>webRoot</b></li>
+                    <li>The <b>port</b> property defines on which port your server should be listening to (usally port 80).</li>
+                    <li>The <b>bindAddress</b> property defines on which interface the server socket should bind on. The bind <b>::</b> means the <a href="https://en.wikipedia.org/wiki/Network_socket" target="_blank" >server socket</a> should bind on all available IPv4 or IPv6 interfaces</li>
+                </ul>
+            </li>
+            <li class="collection-item">
+                <h6>Start your server</h6>
+                Make a new instance of the <b>Server</b> class and pass it your controller classes<br />
+                <coding language="java">package com.github.tncrazvan.helloworld;
+                   
+import com.github.tncrazvan.arcano.Bean.Web;
+import com.github.tncrazvan.arcano.Http.HttpController;
+import com.github.tncrazvan.arcano.Server;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.security.NoSuchAlgorithmException;
+
+public class HelloWorld {
+    
+    @Web(path = "/hello")
+    public class Hello extends HttpController{
+        @Web(path = "/")
+        public String main(){
+            return "hello world!";
+        }
+    }
+    
+    @Web(path = "/hello2")
+    public class Hello2 extends HttpController{
+        @Web(path = "/")
+        public String main(){
+            return "hello world 2!";
+        }
+        
+        @Web(path = "/name")
+        public String name(){
+            return "hello, my name is Arcano!";
+        }
+    }
+
+    public static void main(String[] args) throws IOException, NoSuchAlgorithmException, ClassNotFoundException, URISyntaxException {
+        Server s = new Server(
+            Hello.class,
+            Hello2.class
+        );
+        s.listen(new String[]{"/path/to/your/http.json"});
+    }
+}</coding><br /><br />
+                Now compile your application and run it with <coding language="bash">java -jar app.jar</coding><br />
+                You should get an output similar to this:<br />
+                <coding language="xml">Server started.
+Files glued but not minified.
+Server will minify files in background once every -100ms.
++-----------------+----------------------------------------------------------+
+| Key             | Value                                                    |
++-----------------+----------------------------------------------------------+
+| locale          | it_IT                                                    |
++-----------------+----------------------------------------------------------+
+| timezone        | Europe/Rome                                              |
++-----------------+----------------------------------------------------------+
+| port            | 80                                                       |
++-----------------+----------------------------------------------------------+
+| bindAddress     | ::                                                       |
++-----------------+----------------------------------------------------------+
+| webRoot         | /path/to/your/web/roob                                   |
++-----------------+----------------------------------------------------------+
+| charset         | UTF-8                                                    |
++-----------------+----------------------------------------------------------+
+| timeout         | 30000 milliseconds                                       |
++-----------------+----------------------------------------------------------+
+| sessionTtl      | 1440 seconds                                             |
++-----------------+----------------------------------------------------------+
+| cookieTtl       | 2592000 seconds                                          |
++-----------------+----------------------------------------------------------+
+| cacheMaxAge     | 31536000 seconds                                         |
++-----------------+----------------------------------------------------------+
+| wsMtu           | 65536 bytes                                              |
++-----------------+----------------------------------------------------------+
+| httpMtu         | 65536 bytes                                              |
++-----------------+----------------------------------------------------------+
+| entryPoint      | index.html                                               |
++-----------------+----------------------------------------------------------+
+| minify          | -100 milliseconds                                        |
++-----------------+----------------------------------------------------------+
+| threadPoolSize  | 2 Threads                                                |
++-----------------+----------------------------------------------------------+
+| keepAlive       | 60000 milliseconds                                       |
++-----------------+----------------------------------------------------------+
+| sendExceptions  | True                                                     |
++-----------------+----------------------------------------------------------+
+| responseWrapper | False                                                    |
++-----------------+----------------------------------------------------------+
+| groups          | +-----------+-------+                                    |
+|                 | | Attribute | Value |                                    |
+|                 | +-----------+-------+                                    |
+|                 | | allow     | False |                                    |
+|                 | +-----------+-------+                                    |
++-----------------+----------------------------------------------------------+
+| Routes          | +----------------------------------------------+         |
+|                 | | Path                                         |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/isset/file                               |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/set/websocketgroup                       |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/get/allwebsocketgroups                   |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/get/cookie                               |         |
+|                 | +----------------------------------------------+         |
+|                 | | WS/websocketgroupapplicationprograminterface |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/isset/cookie                             |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/get/file                                 |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/set/cookie                               |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/unset/cookie                             |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/hello                                    |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/hello2                                   |         |
+|                 | +----------------------------------------------+         |
+|                 | | GET/hello2/name                              |         |
+|                 | +----------------------------------------------+         |
++-----------------+----------------------------------------------------------+</coding><br /><br />
+                All the fields you see in the resulting table, except for "Routes", are settings you can modify in your <b>http.json</b> file.
+                The names match exactly, so if you want to change your "threadPoolSize" property, you can do just that by defining it in your settings file.
+                For example:<br />
+                <coding language="json">{
+    "entryPoint":"index.html",
+    "webRoot": "www",
+    "port": 80,
+    "bindAddress": "::",
+    "threadPoolSize": 5
+}</coding>
+            </li>
+        </ul>
+    </MainContent>
+
+</App>
