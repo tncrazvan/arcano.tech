@@ -1,5 +1,5 @@
 {
-    "minify":"-1",
+    "minify":"0",
     "scripts":"scripts",
     "entryPoint":"index.html",
     "webRoot": "www",
