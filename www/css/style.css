@@ -54,22 +54,7 @@ MainContent{
     right: 20%;
     padding: 1em;
 }
-@media screen and (max-width: 945px) {
-    MainContent{
-        left: 0;
-        right: 0;
-    }
-    TopMenu PrimaryButton{
-        display: none !important;
-    }
-    TopMenu h6{
-        display: block !important;
-    }
-    TopMenu{
-        left: 0;
-        max-width: 100%;
-    }
-}
+
 
 .waves-effect.waves-red .waves-ripple {
     background-color: #93280f;
@@ -131,4 +116,32 @@ b{
     display: grid;
     align-items: center;
     justify-items: center;
+}
+.cols-2{
+    padding: 1em;
+    display: grid;
+    grid-template-columns: 6fr 6fr;
+    grid-column-gap: 0.3em;
+}
+@media screen and (max-width: 945px) {
+    MainContent{
+        left: 0;
+        right: 0;
+    }
+    TopMenu PrimaryButton{
+        display: none !important;
+    }
+    TopMenu h6{
+        display: block !important;
+    }
+    TopMenu{
+        left: 0;
+        max-width: 100%;
+    }
+    .cols-2{
+        padding: 0;
+        display: grid;
+        grid-template-columns: 12fr;
+        grid-column-gap: 0;
+    }
 }
