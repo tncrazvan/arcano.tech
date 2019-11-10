@@ -9,4 +9,7 @@
     use.route("documentation",function(location){
         main_content.data.state = main_content.data.STATE_DOCUMENTATION;
     });
+    use.route("create",function(location){
+        main_content.data.state = main_content.data.STATE_CREATE;
+    });
 })();

@@ -1,9 +1,10 @@
 [
     "/css/fonts/roboto.css",
     "/css/fontawesome.css",
-    "/css/materialize.min.css",
+    "/css/materialize.css",
     "/css/highlighter.css",
     "/css/hopscotch.css",
+    "/css/card.css",
     "/css/style.css",
     
     "/js/Elk/Main.js",
@@ -18,6 +19,10 @@
     "/Component/Anchor.js",
     "/Component/Code/Coding.js",
     "/Component/MainContent.js",
+    "/Component/Page/Home.js",
+    "/Component/Page/Quick.js",
+    "/Component/Page/Create.js",
+    "/Component/Input/InputField.js",
 
     "/js/app.js"
 ]

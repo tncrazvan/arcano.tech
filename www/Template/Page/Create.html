@@ -1,0 +1,51 @@
+<div export replace>
+    <p style="margin: 2em">
+        Use the following form to create your Arcano application.<br />
+        Input settings and download your settings file and JAR.
+    </p>
+    <div style="margin: 2em;min-height: 500px" class="card">
+        <div class="card-content">
+            <PrimaryButton style="float:right" class="card-title activator">
+                <i class="material-icons">more_vert</i>
+            </PrimaryButton>
+            <span class="card-title">
+                <i style="font-size: 1.2em;position:relative;top: 0.2em" class="material-icons">
+                    description
+                </i>
+                Application Settings
+            </span>
+            <div style="padding: 1em;display: grid;grid-template-columns: 6fr 6fr;grid-column-gap: 0.3em;">
+                <InputField label="Locale"></InputField>
+                <InputField label="Port" type="number"></InputField>
+                <InputField label="Bind Address"></InputField>
+                <InputField label="Web Root"></InputField>
+                <InputField label="Charset"></InputField>
+                <InputField label="timeout"></InputField>
+                <InputField label="Session TTL"></InputField>
+                <InputField label="Cookie TTL"></InputField>
+                <InputField label="Cache Max Age"></InputField>
+                <InputField label="WebSocket MTU"></InputField>
+                <InputField label="Http MTU"></InputField>
+                <InputField label="Entry Point"></InputField>
+                <InputField label="Minify" type="number"></InputField>
+                <InputField label="Thread Pool Size" type="number"></InputField>
+                <InputField label="Keep Alive" type="number"></InputField>
+                <InputField label="Send Exceptions" type="number"></InputField>
+                <InputField label="Response Wrapper" type="number"></InputField>
+                <InputField label="Groups" type="number"></InputField>
+            </div>
+            <div style="position: relative;">
+                <PrimaryButton style="position: absolute; left: 40%;right:40%;text-align: center;">Download</PrimaryButton>
+            </div>
+            <br />
+        </div>
+        <div class="card-reveal">
+            <PrimaryButton style="float:right" class="card-title">
+                <i class="material-icons">close</i>
+            </PrimaryButton>
+            <div style="padding: 1em">
+                This feature is not yet available.
+            </div>
+        </div>
+    </div>
+</div>

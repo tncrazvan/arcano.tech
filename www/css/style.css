@@ -36,7 +36,7 @@ TopMenu PrimaryButton:not(:last-child){
 
 TopMenu PrimaryButton:first-child{
     margin-left: 3.5em;
-    padding-left: 3em;
+    padding-left: 3.5em;
 }
 TopMenu PrimaryButton:last-child{
     margin-left: 0;
