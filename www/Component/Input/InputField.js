@@ -1,17 +1,30 @@
 Components.$init("/Input/InputField",function(){
+    this.extends("/Input/ToolTip");
     let $this=this;
     let id = uuid();
-    let input = create("input",null,{
-        type:"text",
+    let type="text";
+    let input,label;
+    if(this.hasAttribute("type"))
+        type=this.getAttribute("type");
+    
+    input = create("input",null,{
+        type: type,
         id: id
     });
-    let label = create("label",$this.getAttribute("label"),{
+    label = create("label",$this.getAttribute("label"),{
         for: id
     });
-    if(this.hasAttribute("type"))
-        input.setAttribute("type",this.getAttribute("type"));
     this.classList.add("input-field");
     this.classList.add("col");
     this.appendChild(input);
     this.appendChild(label);
+
+    this.value=function(){
+        if(type === "number"){
+            if(input.value.trim() === "" || isNaN(input.value))
+                return null;
+            return parseInt(input.value);
+        }
+        return input.value;
+    };
 });

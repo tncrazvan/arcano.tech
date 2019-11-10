@@ -22,7 +22,9 @@
     "/Component/Page/Home.js",
     "/Component/Page/Quick.js",
     "/Component/Page/Create.js",
+    "/Component/Input/ToolTip.js",
     "/Component/Input/InputField.js",
+    "/Component/Input/CheckBox.js",
 
     "/js/app.js"
 ]
