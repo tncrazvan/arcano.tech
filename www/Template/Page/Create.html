@@ -105,7 +105,12 @@
             </div><br />
             <hr />
             <div style="position: relative;">
-                <PrimaryButton id="download" style="position: absolute; left: 40%;right:40%;text-align: center;">Download</PrimaryButton>
+                <a id="sendingAnimation" style="cursor: default;position:absolute;left:47%;right:47%;display: none;" class="btn-floating pulse">
+                    <i class="material-icons">cloud_queue</i>
+                </a>
+                <PrimaryButton id="download" style="position: absolute; left: 40%;right:40%;text-align: center;">
+                    <span id="downloadText">Download</span>
+                </PrimaryButton>
                 <script>
                     download.addEventListener("click",async ()=>{
                         let tmp = {
@@ -154,6 +159,8 @@
                         console.log(data);
 
                         let content = JSON.stringify(data);
+                        download.style.display="none";
+                        sendingAnimation.style.display="";
                         const request = await fetch("/create",{
                             method: "POST",
                             body: content
@@ -166,6 +173,8 @@
                         a.download = (filename===""?"app":filename)+".zip";
                         a.click();
                         window.URL.revokeObjectURL(b64);
+                        download.style.display="";
+                        sendingAnimation.style.display="none";
                     });
                 </script>
             </div>
