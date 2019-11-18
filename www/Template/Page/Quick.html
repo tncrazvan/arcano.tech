@@ -69,7 +69,7 @@
             Inside your "<b>.js</b>" file write write the following code:<br />
             <coding language="javascript">if(method !== "GET") //if the mthod is not "GET"
     header("@Status",STATUS_BAD_REQUEST); //respond with "400 Bad Request" status
-else{ //if the method is ineed "GET"
+else{ //if the method is indeed "GET"
     let f = file("../../www/index.html"); //get a file handler (JSFile class)
     send(f.read()); //read the contents of the file and send them to the client
 }</coding><br /><br /><br />
