@@ -81,7 +81,7 @@
                     how large in size is the single largest frame <b>sent</b> to the <br />
                     client or <b>received</b> from the client.
                 </InputField>
-                <InputField ref="threadPoolSize" label="Thread Pool Size" type="number">
+                <InputField ref="threadPoolSize" label="Threads" type="number">
                     This is the size of your Thread Pool.<br />
                     <hr />
                     "By maintaining a pool of threads, the model increases<br />
@@ -101,14 +101,15 @@
                     Check this if you want your server to wrap all <br />
                     the response messages in  JavaScript Object Notation (JSON)
                 </CheckBox>
-                
+                <br />
             </div><br />
             <hr />
-            <div style="position: relative;">
-                <a id="sendingAnimation" style="cursor: default;position:absolute;left:47%;right:47%;display: none;" class="btn-floating pulse">
+            <br />
+            <div style="position: relative;display:grid;grid-template-columns: 1fr;justify-items: center;">
+                <a id="sendingAnimation" style="cursor: default;display: none;" class="btn-floating pulse">
                     <i class="material-icons">cloud_queue</i>
                 </a>
-                <PrimaryButton id="download" style="position: absolute; left: 35%;right:35%;text-align: center;">
+                <PrimaryButton id="download" style="text-align: center;">
                     <span id="downloadText">Download</span>
                 </PrimaryButton>
                 <script>
@@ -178,7 +179,6 @@
                     });
                 </script>
             </div>
-            <br />
         </div>
         <div class="card-reveal">
             <PrimaryButton style="float:right" class="card-title">

@@ -5148,7 +5148,7 @@ small {
   pointer-events: none;
   visibility: hidden;
   background-color: #0f1114;
-  border: 1px solid #93280f;
+  border: 1px solid #f1f1f1;
 }
 
 .backdrop {
