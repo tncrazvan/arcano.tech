@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","url":"allpackages-index.html"},{"l":"com.github.tncrazvan.arcanotech"},{"l":"com.github.tncrazvan.arcanotech.controllers"}]
