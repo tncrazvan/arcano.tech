@@ -60,38 +60,6 @@
             And run your server using <coding language="bash">java -jar http.json</coding>.<br />
             Now you should be able to access the resource "<b>http://127.0.0.1/index.html</b>".
         </li>
-        <li class="collection-item">
-            <h6>Server scripting</h6>
-            Now your server is online, and you can serve the <b>index.html</b> file.<br />
-            Now we're gonna write a simple script that makes the server respond with the <b>index.html</b> when the resource "<b>/</b>" is requested.
-            <hr />
-            Under your <b>scripts/Http</b> directory, make a new file named "<b>.js</b>".<br />
-            Inside your "<b>.js</b>" file write write the following code:<br />
-            <coding language="javascript">if(method !== "GET") //if the mthod is not "GET"
-    header("@Status",STATUS_BAD_REQUEST); //respond with "400 Bad Request" status
-else{ //if the method is indeed "GET"
-    let f = file("../../www/index.html"); //get a file handler (JSFile class)
-    send(f.read()); //read the contents of the file and send them to the client
-}</coding><br /><br /><br />
-            The <b>method</b> variable contains the request method of the client. You can also get the name of the method by calling 
-            <coding language="javascript">server.getClientMethod()</coding>.
-            <hr />
-            The <b>header</b> function simply sets a specific header to your response.<br />
-            The "@Status" key is a special key which sets the status of your response.
-            <hr />
-            The <b>gile</b> function returns a <b>JSFile object</b> which extends Java's File class and defines 3 more 
-            methods: <br />
-            1) <coding language="javascript">read()</coding> returns the contents of the file<br />
-            2) <coding language="javascript">write(contents)</coding> writes contents to the file<br />
-            3) <coding language="javascript">exists()</coding> returns <b>true</b> if the file exists, otherwise <b>false</b>.<br />
-            You can also use all the other methods provided by the File class.<br/><br/>
-
-            <b>NOTE: </b> All paths are relative to the script working directory, which in this case is <b>scripts/Http/</b>, so in order to access the
-            <b>index.html</b> file you need to change directory accordingly. In this case you go back twice using "<b>../../</b>", change directory to 
-            "<b>www/</b>" and finally accessing the file "<b>index.html</b>".
-            <br /><br />
-            Now you can request the resource <b>http://127.0.0.1/</b> and your server will respond with the index.html file.
-        </li>
     </ul>
     <br />
     <Footer></Footer>
