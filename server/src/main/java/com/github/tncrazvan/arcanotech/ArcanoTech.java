@@ -23,6 +23,6 @@ public class ArcanoTech extends Server{
             App.class,
             Documentation.class
         );
-        server.listen(new String[]{"C:\\Users\\Administrator\\Projects\\HtmlProjects\\arcano.tech\\http.json"});
+        server.listen(args);
     }
 }

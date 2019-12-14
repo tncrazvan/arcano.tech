@@ -5,9 +5,9 @@
  */
 package com.github.tncrazvan.arcanotech.controllers;
 
-import com.github.tncrazvan.arcano.Bean.WebMethod;
 import com.github.tncrazvan.arcano.Bean.WebPath;
 import com.github.tncrazvan.arcano.Http.HttpController;
+import static com.github.tncrazvan.arcano.Tool.Status.STATUS_BAD_REQUEST;
 import com.github.tncrazvan.arcanotech.MySQL;
 import com.google.gson.JsonArray;
 import java.sql.Connection;

@@ -8,10 +8,13 @@ package com.github.tncrazvan.arcanotech.controllers;
 import com.github.tncrazvan.arcano.Bean.WebMethod;
 import com.github.tncrazvan.arcano.Bean.WebPath;
 import com.github.tncrazvan.arcano.Http.HttpController;
+import com.github.tncrazvan.arcano.Http.HttpResponse;
+import com.github.tncrazvan.arcano.Tool.Action;
 import com.github.tncrazvan.arcano.Tool.Http.Fetch;
 import com.github.tncrazvan.arcano.Tool.Http.FetchResult;
 import com.github.tncrazvan.arcano.Tool.JsonTools;
 import com.github.tncrazvan.arcano.Tool.ServerFile;
+import static com.github.tncrazvan.arcano.Tool.Strings.uuid;
 import com.github.tncrazvan.arcano.Tool.Zip.ZipArchive;
 import com.google.gson.JsonObject;
 import java.io.File;
@@ -26,7 +29,7 @@ import java.io.IOException;
 public class App extends HttpController implements JsonTools{
     @WebPath(name = "/")
     public File main(){
-        return new File(webRoot,"../index.html");
+        return new File(so.webRoot,"../index.html");
     }
     
     @WebPath(name = "/home")
@@ -44,29 +47,33 @@ public class App extends HttpController implements JsonTools{
         return main();
     }
     
-    @WebPath(name = "/create")
     @WebMethod(name = "GET")
+    @WebPath(name = "/create")
     public File createGET(){
         return main();
     }
     
     @WebMethod(name = "POST")
     @WebPath(name = "/create")
-    public byte[] createPOST() throws FileNotFoundException, IOException{
+    
+    public HttpResponse createPOST() throws FileNotFoundException, IOException{
         ZipArchive archive = new ZipArchive(uuid()+"");
         Fetch fetch = new Fetch(){};
         FetchResult jar = fetch.get("https://github.com/tncrazvan/Arcano/raw/maven-repository/com/github/tncrazvan/Arcano/1.1.0/Arcano-1.1.0.jar");
         if(!jar.isNull()){
             JsonObject data = toJsonObject(new String(input));
-            archive.addEntry(data.get("webRoot").getAsString()+"/"+data.get("entryPoint").getAsString(), "<!DOCTYPE html>\n<html>\n\t<head></head>\n\t<body></body>\n</html>",charset);
-            archive.addEntry("http.json", new String(input).replaceAll(",", ",\n\t").replaceAll("\\{", "{\n\t").replaceAll("\\}","\n}"),charset);
+            archive.addEntry(data.get("webRoot").getAsString()+"/"+data.get("entryPoint").getAsString(), "<!DOCTYPE html>\n<html>\n\t<head></head>\n\t<body></body>\n</html>",so.charset);
+            archive.addEntry("http.json", new String(input).replaceAll(",", ",\n\t").replaceAll("\\{", "{\n\t").replaceAll("\\}","\n}"),so.charset);
             archive.addEntry("arcano.jar",jar.getBytes());
             archive.make();
             ServerFile f = archive.getFile();
-            byte[] result = f.read();
-            f.delete();
-            return result;
+            return new HttpResponse(null,f).then(new Action<Void>() {
+                @Override
+                public void callback(Void o) {
+                    f.delete();
+                }
+            });
         }
-        return "".getBytes(charset);
+        return new HttpResponse(null,null);
     }
 }
