@@ -10,6 +10,7 @@ import com.github.tncrazvan.arcano.Bean.WebPath;
 import com.github.tncrazvan.arcano.Http.HttpController;
 import com.github.tncrazvan.arcano.Tool.Http.Fetch;
 import com.github.tncrazvan.arcano.Tool.Http.FetchResult;
+import com.github.tncrazvan.arcano.Tool.JsonTools;
 import com.github.tncrazvan.arcano.Tool.ServerFile;
 import com.github.tncrazvan.arcano.Tool.Zip.ZipArchive;
 import com.google.gson.JsonObject;
@@ -22,7 +23,7 @@ import java.io.IOException;
  * @author Administrator
  */
 @WebPath(name = "/")
-public class App extends HttpController{
+public class App extends HttpController implements JsonTools{
     @WebPath(name = "/")
     public File main(){
         return new File(webRoot,"../index.html");
@@ -57,8 +58,8 @@ public class App extends HttpController{
         FetchResult jar = fetch.get("https://github.com/tncrazvan/Arcano/raw/maven-repository/com/github/tncrazvan/Arcano/1.1.0/Arcano-1.1.0.jar");
         if(!jar.isNull()){
             JsonObject data = toJsonObject(new String(input));
-            archive.addEntry(data.get("webRoot").getAsString()+"/"+data.get("entryPoint").getAsString(), "<!DOCTYPE html>\n<html>\n\t<head></head>\n\t<body></body>\n</html>");
-            archive.addEntry("http.json", new String(input).replaceAll(",", ",\n\t").replaceAll("\\{", "{\n\t").replaceAll("\\}","\n}"));
+            archive.addEntry(data.get("webRoot").getAsString()+"/"+data.get("entryPoint").getAsString(), "<!DOCTYPE html>\n<html>\n\t<head></head>\n\t<body></body>\n</html>",charset);
+            archive.addEntry("http.json", new String(input).replaceAll(",", ",\n\t").replaceAll("\\{", "{\n\t").replaceAll("\\}","\n}"),charset);
             archive.addEntry("arcano.jar",jar.getBytes());
             archive.make();
             ServerFile f = archive.getFile();
