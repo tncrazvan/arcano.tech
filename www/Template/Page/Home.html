@@ -40,8 +40,8 @@
             Now build your project once to make sure everything works (if you're using an IDE this will probably also download the sources for you).
         </li>
         <li class="collection-item">
-            <h6>Settings</h6>
-            Before running your server you need to make a settings file to feed to your server.<br />
+            <h6>Configuration</h6>
+            Before running your server you need to make a configuration file to feed to your server.<br />
             Make a new <b>http.json</b>, this will contain a json object.<br />
             Make sure your object defines the <b>entryPoint</b>, <b>webRoot</b>, <b>port</b> and <b>bindAddress</b> properties, like so:<br />
             <coding language="json">{
@@ -179,8 +179,8 @@ Server will minify files in background once every -100ms.
 |                 | | GET/hello2/name                              |         |
 |                 | +----------------------------------------------+         |
 +-----------------+----------------------------------------------------------+</coding><br /><br />
-            All the fields you see in the resulting table, except for "Routes", are settings you can modify in your <b>http.json</b> file.
-            The names match exactly, so if you want to change your "threadPoolSize" property, you can do just that by defining it in your settings file.
+            All the fields you see in the resulting table, except for "Routes", are configurations you can modify in your <b>http.json</b> file.
+            The names match exactly, so if you want to change your "threadPoolSize" property, you can do just that by defining it in your configuration file.
             For example:<br />
             <coding language="json">{
     "entryPoint":"index.html",
