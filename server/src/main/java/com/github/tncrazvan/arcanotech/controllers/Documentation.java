@@ -21,7 +21,6 @@ import java.sql.SQLException;
  */
 @WebPath(name = "/documentation")
 public class Documentation extends HttpController{
-    
     @WebPath(name = "/explore")
     public JsonArray explore() throws SQLException{
         if(!e.issetUrlQuery("id")){
@@ -29,15 +28,16 @@ public class Documentation extends HttpController{
             return null;
         }
         String id = e.getUrlQuery("id");
-        Connection conn = new MySQL("127.0.0.1", "root", "", "arcanotech").connect();
-        PreparedStatement st = conn.prepareStatement("select * from visibility where visibility_id like ?");
-        st.setString(1, id);
-        ResultSet result = st.executeQuery();
-        JsonArray array = new JsonArray();
-        while(result.next()){
-            array.add(result.getString("visibility_id"));
+        JsonArray array;
+        try (Connection conn = new MySQL("127.0.0.1", "root", "", "arcanotech").connect()) {
+            PreparedStatement st = conn.prepareStatement("select * from visibility where visibility_id like ?");
+            st.setString(1, id);
+            ResultSet result = st.executeQuery();
+            array = new JsonArray();
+            while(result.next()){
+                array.add(result.getString("visibility_id"));
+            }
         }
-        conn.close();
         return array;
     }
 }

@@ -27,6 +27,12 @@ import java.io.IOException;
  */
 @WebPath(name = "/")
 public class App extends HttpController implements JsonTools{
+
+    @WebPath(name = "/test")
+    public String test(){
+        return "test";
+    }
+
     @WebPath(name = "/")
     public File main(){
         return new File(so.webRoot,"../index.html");
@@ -61,7 +67,7 @@ public class App extends HttpController implements JsonTools{
         Fetch fetch = new Fetch(){};
         FetchResult jar = fetch.get("https://github.com/tncrazvan/Arcano/raw/maven-repository/com/github/tncrazvan/Arcano/1.1.0/Arcano-1.1.0.jar");
         if(!jar.isNull()){
-            JsonObject data = toJsonObject(new String(input));
+            JsonObject data = jsonObject(new String(input));
             archive.addEntry(data.get("webRoot").getAsString()+"/"+data.get("entryPoint").getAsString(), "<!DOCTYPE html>\n<html>\n\t<head></head>\n\t<body></body>\n</html>",so.charset);
             archive.addEntry("http.json", new String(input).replaceAll(",", ",\n\t").replaceAll("\\{", "{\n\t").replaceAll("\\}","\n}"),so.charset);
             archive.addEntry("arcano.jar",jar.getBytes());
@@ -69,8 +75,8 @@ public class App extends HttpController implements JsonTools{
             ServerFile f = archive.getFile();
             return new HttpResponse(null,f).then(new Action<Void>() {
                 @Override
-                public void callback(Void o) {
-                    f.delete();
+                public boolean callback(Void o) {
+                    return f.delete();
                 }
             });
         }
