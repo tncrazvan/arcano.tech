@@ -15,7 +15,7 @@ import java.security.NoSuchAlgorithmException;
  * @author Administrator
  */
 public class Debug extends Server{
-    public static void main(String[] args) throws IOException, NoSuchAlgorithmException, ClassNotFoundException, URISyntaxException {
+    public static void main(String[] args) throws NoSuchAlgorithmException, ClassNotFoundException, IOException, URISyntaxException {
         Debug server = new Debug();
         server.listen(args);
     }

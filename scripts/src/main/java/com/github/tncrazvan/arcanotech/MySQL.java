@@ -15,7 +15,9 @@ import java.sql.SQLException;
  */
 public class MySQL extends MysqlDataSource{
 
-    public MySQL(String hostname,String username, String password) {
+    private static final long serialVersionUID = -4729237726418164448L;
+
+    public MySQL(String hostname, String username, String password) {
         setUser(username);
         setPassword(password);
         setServerName(hostname);
