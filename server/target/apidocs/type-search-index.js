@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"com.github.tncrazvan.arcanotech.controllers","l":"App"},{"p":"com.github.tncrazvan.arcanotech","l":"ArcanoTech"},{"p":"com.github.tncrazvan.arcanotech.controllers","l":"Documentation"},{"p":"com.github.tncrazvan.arcanotech","l":"MySQL"}]
