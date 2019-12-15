@@ -15,14 +15,21 @@
                 Application Configuration
             </span>
             <div id="form" class="cols-2">
-                <InputField ref="appname" label="Name" type="text">
-                    Name of your application
+                <InputField ref="namespace" label="Namespace" type="text" value="tech.arcano">
+                    This is the namespace of your application.<br />
+                    Usually this value is some string that identifies your project as part of an array of other projects.<br />
+                    <br />
+                    This will also be used as your maven Group ID.
                 </InputField>
-                <InputField ref="port" label="Port" type="number">
+                <InputField ref="appname" label="App Name" type="text" value="MyApp">
+                    This is the name of your application.<br /><br />
+                    This will also be used as your maven Artifact ID and Main Class name.
+                </InputField>
+                <InputField ref="port" label="Port" type="number" value="80">
                     The port number your server should be listening to.<br />
                     This is usually set to <b>80</b> for HTTP or <b>443</b> for HTTPS.<br />
                 </InputField>
-                <InputField ref="bindAddress" label="Bind Address">
+                <InputField ref="bindAddress" label="Bind Address" value="::">
                     The interfaces your server should bind to, this is usually an IP address.<br />
                     <hr />
                     <div class="left-text">
@@ -31,7 +38,7 @@
                         tell your server to bind on <b>all</b> available <b>IPv4 or IPv6</b> interfaces.
                     </div>
                 </InputField>
-                <InputField ref="webRoot" label="Web Root">
+                <InputField ref="webRoot" label="Web Root" value="www">
                     This is the root of your application.<br />
                     <hr />
                     <div class="left-text">
@@ -41,7 +48,7 @@
                         or <b>script</b> (in JavaScript) that does it.
                     </div>
                 </InputField>
-                <InputField ref="entryPoint" label="Entry Point">
+                <InputField ref="entryPoint" label="Entry Point" value="index.html">
                     This is the file that will be served by your server whenever<br />
                     a client requests the <b>root</b> resource.<br />
                     <hr>
@@ -54,18 +61,18 @@
                         The <b>Entry Point</b> file is relative to the <b>Web Root</b> location.
                     </div>
                 </InputField>
-                <InputField ref="charset" label="Charset">
+                <InputField ref="charset" label="Charset" value="UTF-8">
                     This is the charset your server will be using.<br />
                     This ios by default set to <b>UTF-8</b>.
                 </InputField>
-                <InputField ref="timeout" label="timeout" type="number">
+                <InputField ref="timeout" label="timeout" type="number" value="5000">
                     This defines how long (<b>milliseconds</b>) the server should wait for a client<br />
                     that is not sending any data before closing the connection.
                 </InputField>
-                <InputField ref="sessionTTL" label="Session TTL" type="number">
+                <InputField ref="sessionTtl" label="Session TTL" type="number" value="1440">
                     This defines how long (<b>seconds</b>) a session should live.
                 </InputField>
-                <InputField ref="webSocketMTU" label="WS MTU" type="number">
+                <InputField ref="webSocketMtu" label="WS MTU" type="number" value="65536">
                     This is the Maximum Transmission Unit for WebSockets, which defines<br />
                     how large in size is the single largest frame <b>sent</b> to the <br />
                     client or <b>received</b> from the client.
@@ -76,12 +83,18 @@
                         This value "<i>simply</i>" tells the server how many bytes to read or write at once.
                     </div>
                 </InputField>
-                <InputField ref="httpMTU" label="Http MTU" type="number">
+                <InputField ref="httpMtu" label="Http MTU" type="number" value="65536">
                     This is the Maximum Transmission Unit for Http request, which defines <br />
                     how large in size is the single largest frame <b>sent</b> to the <br />
                     client or <b>received</b> from the client.
+                    <hr />
+                    <div class="left-text">
+                        This doesn't mean you can't receive messages <b>larger than</b> this <br />
+                        <b>value</b> or that the incoming messages will be <b>split</b> in more pieces.<br />
+                        This value "<i>simply</i>" tells the server how many bytes to read or write at once.
+                    </div>
                 </InputField>
-                <InputField ref="threadPoolSize" label="Threads" type="number">
+                <InputField ref="threadPoolSize" label="Threads" type="number" value="3">
                     This is the size of your Thread Pool.<br />
                     <hr />
                     "By maintaining a pool of threads, the model increases<br />
@@ -115,45 +128,26 @@
                 <script>
                     download.addEventListener("click",async ()=>{
                         let tmp = {
+                            serverRoot: "server",
+                            webRoot: form.ref("webRoot").value(),
+                            namespace: form.ref("namespace").value(),
+                            appname: form.ref("appname").value(),
                             port: form.ref("port").value(),
-                            bindAddress: form.ref("bindAddress").value().trim(),
-                            webRoot: form.ref("webRoot").value().trim(),
-                            entryPoint: form.ref("entryPoint").value().trim(),
-                            charset: form.ref("charset").value().trim(),
+                            bindAddress: form.ref("bindAddress").value(),
+                            entryPoint: form.ref("entryPoint").value(),
+                            charset: form.ref("charset").value(),
                             timeout: form.ref("timeout").value(),
-                            sessionTTL: form.ref("sessionTTL").value(),
-                            webSocketMTU: form.ref("webSocketMTU").value(),
-                            httpMTU: form.ref("httpMTU").value(),
+                            sessionTtl: form.ref("sessionTtl").value(),
+                            webSocketMtu: form.ref("webSocketMtu").value(),
+                            httpMtu: form.ref("httpMtu").value(),
                             threadPoolSize: form.ref("threadPoolSize").value(),
                             sendExceptions: form.ref("sendExceptions").value(),
                             responseWrapper: form.ref("responseWrapper").value()
                         };
 
-                        if(tmp.port === null)
-                            tmp.port = null;
-                        if(tmp.bindAddress === "")
-                            tmp.bindAddress = null;
-                        if(tmp.webRoot === "")
-                            tmp.webRoot = "www";
-                        if(tmp.entryPoint === "")
-                            tmp.entryPoint = "index.html";
-                        if(tmp.charset === "")
-                            tmp.charset = null;
-                        if(tmp.timeout === null)
-                            tmp.timeout = null;
-                        if(tmp.sessionTTL === null)
-                            tmp.sessionTTL = null;
-                        if(tmp.webSocketMTU === null)
-                            tmp.webSocketMTU = null;
-                        if(tmp.httpMTU === null)
-                            tmp.httpMTU = null;
-                        if(tmp.threadPoolSize === null)
-                            tmp.threadPoolSize = null;
-                        if(!tmp.responseWrapper)
-                            tmp.responseWrapper = null;
                         let data = {};
                         Object.keys(tmp).map(key => {
-                            if(tmp[key] !== null)
+                            if(tmp[key] !== null && tmp[key] !== "")
                                 data[key] = tmp[key];
                         });
 
@@ -170,7 +164,7 @@
                         const b64 = window.URL.createObjectURL(blob);
                         const a = create("a");
                         a.href = b64;
-                        let filename = form.ref("appname").value().trim();
+                        let filename = form.ref("appname").value();
                         a.download = (filename===""?"app":filename)+".zip";
                         a.click();
                         window.URL.revokeObjectURL(b64);

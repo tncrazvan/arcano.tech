@@ -14,7 +14,7 @@ Components.$init("/Input/ToolTip",function(){
             html: tooltipHTML,
             position: position
         });
-    
+
         this.addEventListener("focus",()=>{
             this.open();
         });

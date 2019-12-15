@@ -110,11 +110,19 @@ h6{
 hr{
     border: 0;
     height: 1px;
-    background-color: #2e2a38;
+    background-color: #6f200d;
 }
 
 b{
-    color: #922a1a;
+    color: #6f200d;
+}
+.material-tooltip b{
+    color: #5e93e3;
+}
+.material-tooltip hr{
+    border: 0;
+    height: 1px;
+    background-color: #1756b4;
 }
 
 .left-text, .left-text *{

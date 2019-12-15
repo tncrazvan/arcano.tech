@@ -1,0 +1,35 @@
+package com.github.tncrazvan.arcanotech.controller;
+
+import com.github.tncrazvan.arcanotech.database.MySQL;
+import com.github.tncrazvan.arcano.Bean.WebPath;
+import com.github.tncrazvan.arcano.Http.HttpController;
+
+import static com.github.tncrazvan.arcano.Tool.Status.STATUS_BAD_REQUEST;
+import com.google.gson.JsonArray;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+@WebPath(name = "/documentation")
+public class Documentation extends HttpController{
+    @WebPath(name = "/explore")
+    public JsonArray explore() throws SQLException{
+        if(!e.issetUrlQuery("id")){
+            e.setStatus(STATUS_BAD_REQUEST);
+            return null;
+        }
+        String id = e.getUrlQuery("id");
+        JsonArray array;
+        try (Connection conn = new MySQL("127.0.0.1", "root", "", "arcanotech").connect()) {
+            PreparedStatement st = conn.prepareStatement("select * from visibility where visibility_id like ?");
+            st.setString(1, id);
+            ResultSet result = st.executeQuery();
+            array = new JsonArray();
+            while(result.next()){
+                array.add("assssd:"+result.getString("visibility_id"));
+            }
+        }
+        return array;
+    }
+}
