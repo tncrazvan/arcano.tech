@@ -73,6 +73,8 @@ public class App extends HttpController implements JsonTools{
 
         String start = new String(new ServerFile(so.webRoot,"metadata/start").read(),so.charset)
                         .replaceAll("\\$appname", appname);
+        String update = new String(new ServerFile(so.webRoot,"metadata/update").read(),so.charset)
+                        .replaceAll("\\$appname", appname);
 
         String config = new String(input)
                         .replaceAll(",", ",\n\t")
@@ -86,6 +88,7 @@ public class App extends HttpController implements JsonTools{
         archive.addEntry(serverRoot+"/src/main/java/"+path+"/Controller/HelloWorld.java",helloWorld,so.charset);
         archive.addEntry("http.json", config, so.charset);
         archive.addEntry("start", start, so.charset);
+        archive.addEntry("update", update, so.charset);
         archive.make();
         ServerFile f = archive.getFile();
         return new HttpResponse(null,f).then(new Action<Void>() {
