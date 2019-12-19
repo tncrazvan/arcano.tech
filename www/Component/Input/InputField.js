@@ -31,12 +31,13 @@ Components.$init("/Input/InputField",function(){
 
     this.value=function(...v){
         if(v.length === 0){
-            if(firstClick) return value;
             if(type === "number"){
+                if(firstClick) return parseInt(value);
                 if(input.value.trim() === "" || isNaN(input.value))
                     return null;
                 return parseInt(input.value);
             }
+            if(firstClick) return value;
             return input.value.trim();
         }else{
             input.value = [...v].join("");

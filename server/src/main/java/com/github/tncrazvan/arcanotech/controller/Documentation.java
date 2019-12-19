@@ -15,11 +15,11 @@ import java.sql.SQLException;
 public class Documentation extends HttpController{
     @WebPath(name = "/explore")
     public JsonArray explore() throws SQLException{
-        if(!e.issetUrlQuery("id")){
-            e.setStatus(STATUS_BAD_REQUEST);
+        if(!issetRequestQueryString("id")){
+            setResponseStatus(STATUS_BAD_REQUEST);
             return null;
         }
-        String id = e.getUrlQuery("id");
+        String id = getRequestQueryString("id");
         JsonArray array;
         try (Connection conn = new MySQL("127.0.0.1", "root", "", "arcanotech").connect()) {
             PreparedStatement st = conn.prepareStatement("select * from visibility where visibility_id like ?");

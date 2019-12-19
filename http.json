@@ -1,4 +1,5 @@
 {
+	"minify":-1000,
 	"serverRoot":"server",
 	"webRoot":"www",
 	"namespace":"com.github.tncrazvan",

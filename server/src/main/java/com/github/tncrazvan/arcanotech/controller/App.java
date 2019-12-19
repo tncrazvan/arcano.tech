@@ -5,9 +5,8 @@ import com.github.tncrazvan.arcano.Bean.WebPath;
 import com.github.tncrazvan.arcano.Http.HttpController;
 import com.github.tncrazvan.arcano.Http.HttpResponse;
 import com.github.tncrazvan.arcano.Tool.Action;
-import com.github.tncrazvan.arcano.Tool.Http.Fetch;
-import com.github.tncrazvan.arcano.Tool.Http.FetchResult;
 import com.github.tncrazvan.arcano.Tool.JsonTools;
+import static com.github.tncrazvan.arcano.Tool.JsonTools.jsonObject;
 import com.github.tncrazvan.arcano.Tool.ServerFile;
 import static com.github.tncrazvan.arcano.Tool.Strings.uuid;
 import com.github.tncrazvan.arcano.Tool.Zip.ZipArchive;
@@ -18,12 +17,6 @@ import java.io.IOException;
 
 @WebPath(name = "/")
 public class App extends HttpController implements JsonTools{
-
-    @WebPath(name = "/test")
-    public String test(){
-        return "test";
-    }
-
     @WebPath(name = "/")
     public File main(){
         return new File(so.webRoot,so.entryPoint);
@@ -49,7 +42,7 @@ public class App extends HttpController implements JsonTools{
     @WebPath(name = "/create")
     public HttpResponse createPOST() throws FileNotFoundException, IOException{
         ZipArchive archive = new ZipArchive(uuid()+"");
-        JsonObject data = jsonObject(new String(input));
+        JsonObject data = jsonObject(new String(request.content));
         String serverRoot = data.get("serverRoot").getAsString();
         String webRoot = data.get("webRoot").getAsString();
         String entryPoint = data.get("entryPoint").getAsString();
@@ -76,7 +69,7 @@ public class App extends HttpController implements JsonTools{
         String update = new String(new ServerFile(so.webRoot,"metadata/update").read(),so.charset)
                         .replaceAll("\\$appname", appname);
 
-        String config = new String(input)
+        String config = new String(request.content)
                         .replaceAll(",", ",\n\t")
                         .replaceAll("\\{", "{\n\t")
                         .replaceAll("\\}","\n}");
@@ -91,7 +84,7 @@ public class App extends HttpController implements JsonTools{
         archive.addEntry("update", update, so.charset);
         archive.make();
         ServerFile f = archive.getFile();
-        return new HttpResponse(null,f).then(new Action<Void>() {
+        return new HttpResponse(f).then(new Action<Void>() {
             @Override
             public boolean callback(Void o) {
                 return f.delete();
