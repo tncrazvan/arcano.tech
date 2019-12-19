@@ -69,7 +69,10 @@ public class App extends HttpController implements JsonTools{
         String update = new String(new ServerFile(so.webRoot,"metadata/update").read(),so.charset)
                         .replaceAll("\\$appname", appname);
 
-        String config = new String(request.content)
+        JsonObject tmp = JsonTools.jsonObject(new String(request.content));
+        tmp.remove("appname");
+        tmp.remove("namespace");
+        String config = new String(tmp.toString())
                         .replaceAll(",", ",\n\t")
                         .replaceAll("\\{", "{\n\t")
                         .replaceAll("\\}","\n}");
