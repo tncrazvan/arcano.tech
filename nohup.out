@@ -1,0 +1,314 @@
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.google.inject.internal.cglib.core.$ReflectUtils$1 (file:/usr/share/maven/lib/guice.jar) to method java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain)
+WARNING: Please consider reporting this to the maintainers of com.google.inject.internal.cglib.core.$ReflectUtils$1
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-------------< [0;36mcom.github.tncrazvan.arcanotech:ArcanoTech[0;1m >-------------[m
+[[1;34mINFO[m] [1mBuilding ArcanoTech 1.0.0[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mArcanoTech[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /root/arcano.tech/server/src/main/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:compile[m [1m(default-compile)[m @ [36mArcanoTech[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mArcanoTech[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /root/arcano.tech/server/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:testCompile[m [1m(default-testCompile)[m @ [36mArcanoTech[0;1m ---[m
+[[1;34mINFO[m] No sources to compile
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:2.12.4:test[m [1m(default-test)[m @ [36mArcanoTech[0;1m ---[m
+[[1;34mINFO[m] No tests to run.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-jar-plugin:3.1.2:jar[m [1m(default-jar)[m @ [36mArcanoTech[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-shade-plugin:3.2.1:shade[m [1m(default)[m @ [36mArcanoTech[0;1m ---[m
+[[1;34mINFO[m] Including com.github.tncrazvan:Arcano:jar:1.1.0 in the shaded jar.
+[[1;34mINFO[m] Including mysql:mysql-connector-java:jar:8.0.18 in the shaded jar.
+[[1;33mWARNING[m] ArcanoTech-1.0.0.jar, Arcano-1.1.0.jar define 411 overlapping classes: 
+[[1;33mWARNING[m]   - javax.xml.bind.annotation.XmlValue
+[[1;33mWARNING[m]   - com.google.gson.internal.bind.JsonTreeWriter
+[[1;33mWARNING[m]   - javax.activation.DataContentHandlerFactory
+[[1;33mWARNING[m]   - javax.activation.SecuritySupport$2
+[[1;33mWARNING[m]   - javax.xml.bind.annotation.XmlElement$DEFAULT
+[[1;33mWARNING[m]   - com.google.gson.internal.UnsafeAllocator$2
+[[1;33mWARNING[m]   - com.google.gson.internal.Primitives
+[[1;33mWARNING[m]   - javax.xml.bind.annotation.XmlRegistry
+[[1;33mWARNING[m]   - com.google.gson.JsonNull
+[[1;33mWARNING[m]   - javax.xml.bind.annotation.XmlSchemaType
+[[1;33mWARNING[m]   - 401 more...
+[[1;33mWARNING[m] mysql-connector-java-8.0.18.jar, ArcanoTech-1.0.0.jar define 979 overlapping classes: 
+[[1;33mWARNING[m]   - com.mysql.cj.protocol.WriterWatcher
+[[1;33mWARNING[m]   - com.mysql.cj.x.protobuf.MysqlxResultset$ColumnMetaData$Builder
+[[1;33mWARNING[m]   - com.mysql.cj.protocol.a.result.ResultsetRowsStatic
+[[1;33mWARNING[m]   - com.mysql.cj.result.SqlTimestampValueFactory
+[[1;33mWARNING[m]   - com.mysql.cj.xdevapi.DatabaseObject$DbObjectStatus
+[[1;33mWARNING[m]   - com.mysql.cj.jdbc.MysqlSavepoint
+[[1;33mWARNING[m]   - com.mysql.cj.conf.url.LoadbalanceConnectionUrl
+[[1;33mWARNING[m]   - com.mysql.cj.log.LoggingProfilerEventHandler
+[[1;33mWARNING[m]   - com.mysql.cj.protocol.a.NativeSocketConnection$1
+[[1;33mWARNING[m]   - com.mysql.cj.jdbc.NonRegisteringDriver$1
+[[1;33mWARNING[m]   - 969 more...
+[[1;33mWARNING[m] maven-shade-plugin has detected that some class files are
+[[1;33mWARNING[m] present in two or more JARs. When this happens, only one
+[[1;33mWARNING[m] single version of the class is copied to the uber jar.
+[[1;33mWARNING[m] Usually this is not harmful and you can skip these warnings,
+[[1;33mWARNING[m] otherwise try to manually exclude artifacts based on
+[[1;33mWARNING[m] mvn dependency:tree -Ddetail=true and the above output.
+[[1;33mWARNING[m] See http://maven.apache.org/plugins/maven-shade-plugin/
+[[1;34mINFO[m] Replacing original artifact with shaded artifact.
+[[1;34mINFO[m] Replacing /root/arcano.tech/server/target/ArcanoTech-1.0.0.jar with /root/arcano.tech/server/target/ArcanoTech-1.0.0-shaded.jar
+[[1;34mINFO[m] Dependency-reduced POM written at: /root/arcano.tech/server/dependency-reduced-pom.xml
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-install-plugin:2.4:install[m [1m(default-install)[m @ [36mArcanoTech[0;1m ---[m
+[[1;34mINFO[m] Installing /root/arcano.tech/server/target/ArcanoTech-1.0.0.jar to /root/.m2/repository/com/github/tncrazvan/arcanotech/ArcanoTech/1.0.0/ArcanoTech-1.0.0.jar
+[[1;34mINFO[m] Installing /root/arcano.tech/server/dependency-reduced-pom.xml to /root/.m2/repository/com/github/tncrazvan/arcanotech/ArcanoTech/1.0.0/ArcanoTech-1.0.0.pom
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  6.220 s
+[[1;34mINFO[m] Finished at: 2019-12-19T23:24:38Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+ARGS: [../http.json]
+
+Server started.
++-----------------+---------------------------------+
+| Key             | Value                           |
++-----------------+---------------------------------+
+| locale          | en_US                           |
++-----------------+---------------------------------+
+| timezone        | Etc/UTC                         |
++-----------------+---------------------------------+
+| port            | 80                              |
++-----------------+---------------------------------+
+| bindAddress     | ::                              |
++-----------------+---------------------------------+
+| serverRoot      | ../server/                      |
++-----------------+---------------------------------+
+| webRoot         | ../www/                         |
++-----------------+---------------------------------+
+| charset         | UTF-8                           |
++-----------------+---------------------------------+
+| timeout         | 5000 milliseconds               |
++-----------------+---------------------------------+
+| sessionTtl      | 1440 seconds                    |
++-----------------+---------------------------------+
+| webSocketMtu    | 65536 bytes                     |
++-----------------+---------------------------------+
+| httpMtu         | 65536 bytes                     |
++-----------------+---------------------------------+
+| entryPoint      | index.html                      |
++-----------------+---------------------------------+
+| minify          | 0 milliseconds                  |
++-----------------+---------------------------------+
+| threadPoolSize  | 3 Threads                       |
++-----------------+---------------------------------+
+| sendExceptions  | True                            |
++-----------------+---------------------------------+
+| responseWrapper | False                           |
++-----------------+---------------------------------+
+| groups          | +-----------+-------+           |
+|                 | | Attribute | Value |           |
+|                 | +-----------+-------+           |
+|                 | | allow     | False |           |
+|                 | +-----------+-------+           |
++-----------------+---------------------------------+
+| Routes          | +-----------------------------+ |
+|                 | | Path                        | |
+|                 | +-----------------------------+ |
+|                 | | WS/websocketgroupapi        | |
+|                 | +-----------------------------+ |
+|                 | | POST/@set/cookie            | |
+|                 | +-----------------------------+ |
+|                 | | GET/@get/allwebsocketgroups | |
+|                 | +-----------------------------+ |
+|                 | | GET/@isset/file             | |
+|                 | +-----------------------------+ |
+|                 | | GET/@get/memory             | |
+|                 | +-----------------------------+ |
+|                 | | GET/@get/cookie             | |
+|                 | +-----------------------------+ |
+|                 | | POST/@set/websocketgroup    | |
+|                 | +-----------------------------+ |
+|                 | | GET/home                    | |
+|                 | +-----------------------------+ |
+|                 | | GET/create                  | |
+|                 | +-----------------------------+ |
+|                 | | GET/@isset/cookie           | |
+|                 | +-----------------------------+ |
+|                 | | GET/documentation/explore   | |
+|                 | +-----------------------------+ |
+|                 | | GET/quick                   | |
+|                 | +-----------------------------+ |
+|                 | | POST/create                 | |
+|                 | +-----------------------------+ |
+|                 | | GET/@unset/cookie           | |
+|                 | +-----------------------------+ |
+|                 | | GET/                        | |
+|                 | +-----------------------------+ |
+|                 | | GET/@get/file               | |
+|                 | +-----------------------------+ |
++-----------------+---------------------------------+
+WARNING: An illegal reflective access operation has occurred
+WARNING: Illegal reflective access by com.google.inject.internal.cglib.core.$ReflectUtils$1 (file:/usr/share/maven/lib/guice.jar) to method java.lang.ClassLoader.defineClass(java.lang.String,byte[],int,int,java.security.ProtectionDomain)
+WARNING: Please consider reporting this to the maintainers of com.google.inject.internal.cglib.core.$ReflectUtils$1
+WARNING: Use --illegal-access=warn to enable warnings of further illegal reflective access operations
+WARNING: All illegal access operations will be denied in a future release
+[[1;34mINFO[m] Scanning for projects...
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m-------------< [0;36mcom.github.tncrazvan.arcanotech:ArcanoTech[0;1m >-------------[m
+[[1;34mINFO[m] [1mBuilding ArcanoTech 1.0.0[m
+[[1;34mINFO[m] [1m--------------------------------[ jar ]---------------------------------[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:resources[m [1m(default-resources)[m @ [36mArcanoTech[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /root/arcano.tech/server/src/main/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:compile[m [1m(default-compile)[m @ [36mArcanoTech[0;1m ---[m
+[[1;34mINFO[m] Nothing to compile - all classes are up to date
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-resources-plugin:2.6:testResources[m [1m(default-testResources)[m @ [36mArcanoTech[0;1m ---[m
+[[1;34mINFO[m] Using 'UTF-8' encoding to copy filtered resources.
+[[1;34mINFO[m] skip non existing resourceDirectory /root/arcano.tech/server/src/test/resources
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-compiler-plugin:3.1:testCompile[m [1m(default-testCompile)[m @ [36mArcanoTech[0;1m ---[m
+[[1;34mINFO[m] No sources to compile
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-surefire-plugin:2.12.4:test[m [1m(default-test)[m @ [36mArcanoTech[0;1m ---[m
+[[1;34mINFO[m] No tests to run.
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-jar-plugin:3.1.2:jar[m [1m(default-jar)[m @ [36mArcanoTech[0;1m ---[m
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-shade-plugin:3.2.1:shade[m [1m(default)[m @ [36mArcanoTech[0;1m ---[m
+[[1;34mINFO[m] Including com.github.tncrazvan:Arcano:jar:1.1.0 in the shaded jar.
+[[1;34mINFO[m] Including mysql:mysql-connector-java:jar:8.0.18 in the shaded jar.
+[[1;33mWARNING[m] ArcanoTech-1.0.0.jar, Arcano-1.1.0.jar define 411 overlapping classes: 
+[[1;33mWARNING[m]   - javax.xml.bind.annotation.XmlValue
+[[1;33mWARNING[m]   - com.google.gson.internal.bind.JsonTreeWriter
+[[1;33mWARNING[m]   - javax.activation.DataContentHandlerFactory
+[[1;33mWARNING[m]   - javax.activation.SecuritySupport$2
+[[1;33mWARNING[m]   - javax.xml.bind.annotation.XmlElement$DEFAULT
+[[1;33mWARNING[m]   - com.google.gson.internal.UnsafeAllocator$2
+[[1;33mWARNING[m]   - com.google.gson.internal.Primitives
+[[1;33mWARNING[m]   - javax.xml.bind.annotation.XmlRegistry
+[[1;33mWARNING[m]   - com.google.gson.JsonNull
+[[1;33mWARNING[m]   - javax.xml.bind.annotation.XmlSchemaType
+[[1;33mWARNING[m]   - 401 more...
+[[1;33mWARNING[m] mysql-connector-java-8.0.18.jar, ArcanoTech-1.0.0.jar define 979 overlapping classes: 
+[[1;33mWARNING[m]   - com.mysql.cj.protocol.WriterWatcher
+[[1;33mWARNING[m]   - com.mysql.cj.x.protobuf.MysqlxResultset$ColumnMetaData$Builder
+[[1;33mWARNING[m]   - com.mysql.cj.protocol.a.result.ResultsetRowsStatic
+[[1;33mWARNING[m]   - com.mysql.cj.result.SqlTimestampValueFactory
+[[1;33mWARNING[m]   - com.mysql.cj.xdevapi.DatabaseObject$DbObjectStatus
+[[1;33mWARNING[m]   - com.mysql.cj.jdbc.MysqlSavepoint
+[[1;33mWARNING[m]   - com.mysql.cj.conf.url.LoadbalanceConnectionUrl
+[[1;33mWARNING[m]   - com.mysql.cj.log.LoggingProfilerEventHandler
+[[1;33mWARNING[m]   - com.mysql.cj.protocol.a.NativeSocketConnection$1
+[[1;33mWARNING[m]   - com.mysql.cj.jdbc.NonRegisteringDriver$1
+[[1;33mWARNING[m]   - 969 more...
+[[1;33mWARNING[m] maven-shade-plugin has detected that some class files are
+[[1;33mWARNING[m] present in two or more JARs. When this happens, only one
+[[1;33mWARNING[m] single version of the class is copied to the uber jar.
+[[1;33mWARNING[m] Usually this is not harmful and you can skip these warnings,
+[[1;33mWARNING[m] otherwise try to manually exclude artifacts based on
+[[1;33mWARNING[m] mvn dependency:tree -Ddetail=true and the above output.
+[[1;33mWARNING[m] See http://maven.apache.org/plugins/maven-shade-plugin/
+[[1;34mINFO[m] Replacing original artifact with shaded artifact.
+[[1;34mINFO[m] Replacing /root/arcano.tech/server/target/ArcanoTech-1.0.0.jar with /root/arcano.tech/server/target/ArcanoTech-1.0.0-shaded.jar
+[[1;34mINFO[m] Dependency-reduced POM written at: /root/arcano.tech/server/dependency-reduced-pom.xml
+[[1;34mINFO[m] 
+[[1;34mINFO[m] [1m--- [0;32mmaven-install-plugin:2.4:install[m [1m(default-install)[m @ [36mArcanoTech[0;1m ---[m
+[[1;34mINFO[m] Installing /root/arcano.tech/server/target/ArcanoTech-1.0.0.jar to /root/.m2/repository/com/github/tncrazvan/arcanotech/ArcanoTech/1.0.0/ArcanoTech-1.0.0.jar
+[[1;34mINFO[m] Installing /root/arcano.tech/server/dependency-reduced-pom.xml to /root/.m2/repository/com/github/tncrazvan/arcanotech/ArcanoTech/1.0.0/ArcanoTech-1.0.0.pom
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] [1;32mBUILD SUCCESS[m
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+[[1;34mINFO[m] Total time:  6.077 s
+[[1;34mINFO[m] Finished at: 2019-12-19T23:37:32Z
+[[1;34mINFO[m] [1m------------------------------------------------------------------------[m
+ARGS: [../http.json]
+
+Server started.
++-----------------+---------------------------------+
+| Key             | Value                           |
++-----------------+---------------------------------+
+| locale          | en_US                           |
++-----------------+---------------------------------+
+| timezone        | Etc/UTC                         |
++-----------------+---------------------------------+
+| port            | 80                              |
++-----------------+---------------------------------+
+| bindAddress     | ::                              |
++-----------------+---------------------------------+
+| serverRoot      | ../server/                      |
++-----------------+---------------------------------+
+| webRoot         | ../www/                         |
++-----------------+---------------------------------+
+| charset         | UTF-8                           |
++-----------------+---------------------------------+
+| timeout         | 5000 milliseconds               |
++-----------------+---------------------------------+
+| sessionTtl      | 1440 seconds                    |
++-----------------+---------------------------------+
+| webSocketMtu    | 65536 bytes                     |
++-----------------+---------------------------------+
+| httpMtu         | 65536 bytes                     |
++-----------------+---------------------------------+
+| entryPoint      | index.html                      |
++-----------------+---------------------------------+
+| minify          | 0 milliseconds                  |
++-----------------+---------------------------------+
+| threadPoolSize  | 3 Threads                       |
++-----------------+---------------------------------+
+| sendExceptions  | True                            |
++-----------------+---------------------------------+
+| responseWrapper | False                           |
++-----------------+---------------------------------+
+| groups          | +-----------+-------+           |
+|                 | | Attribute | Value |           |
+|                 | +-----------+-------+           |
+|                 | | allow     | False |           |
+|                 | +-----------+-------+           |
++-----------------+---------------------------------+
+| Routes          | +-----------------------------+ |
+|                 | | Path                        | |
+|                 | +-----------------------------+ |
+|                 | | WS/websocketgroupapi        | |
+|                 | +-----------------------------+ |
+|                 | | POST/@set/cookie            | |
+|                 | +-----------------------------+ |
+|                 | | GET/@get/allwebsocketgroups | |
+|                 | +-----------------------------+ |
+|                 | | GET/@isset/file             | |
+|                 | +-----------------------------+ |
+|                 | | GET/@get/memory             | |
+|                 | +-----------------------------+ |
+|                 | | GET/@get/cookie             | |
+|                 | +-----------------------------+ |
+|                 | | POST/@set/websocketgroup    | |
+|                 | +-----------------------------+ |
+|                 | | GET/home                    | |
+|                 | +-----------------------------+ |
+|                 | | GET/create                  | |
+|                 | +-----------------------------+ |
+|                 | | GET/@isset/cookie           | |
+|                 | +-----------------------------+ |
+|                 | | GET/documentation/explore   | |
+|                 | +-----------------------------+ |
+|                 | | GET/quick                   | |
+|                 | +-----------------------------+ |
+|                 | | POST/create                 | |
+|                 | +-----------------------------+ |
+|                 | | GET/@unset/cookie           | |
+|                 | +-----------------------------+ |
+|                 | | GET/                        | |
+|                 | +-----------------------------+ |
+|                 | | GET/@get/file               | |
+|                 | +-----------------------------+ |
++-----------------+---------------------------------+
