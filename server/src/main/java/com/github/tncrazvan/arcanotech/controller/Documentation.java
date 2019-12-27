@@ -1,10 +1,10 @@
 package com.github.tncrazvan.arcanotech.controller;
 
 import com.github.tncrazvan.arcanotech.database.MySQL;
-import com.github.tncrazvan.arcano.Bean.WebPath;
+import com.github.tncrazvan.arcano.Bean.Web.WebPath;
 import com.github.tncrazvan.arcano.Http.HttpController;
+import static com.github.tncrazvan.arcano.Tool.Http.Status.STATUS_BAD_REQUEST;
 
-import static com.github.tncrazvan.arcano.Tool.Status.STATUS_BAD_REQUEST;
 import com.google.gson.JsonArray;
 import java.sql.Connection;
 import java.sql.PreparedStatement;

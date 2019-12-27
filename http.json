@@ -7,9 +7,6 @@
 	"entryPoint":"index.html",
 	"charset":"UTF-8",
 	"timeout":5000,
-	"sessionTtl":1440,
-	"webSocketMtu":65536,
-	"httpMtu":65536,
 	"threadPoolSize":3,
 	"sendExceptions":true,
 	"responseWrapper":false

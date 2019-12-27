@@ -1,25 +1,26 @@
 package com.github.tncrazvan.arcanotech.controller;
 
-import com.github.tncrazvan.arcano.Bean.WebMethod;
-import com.github.tncrazvan.arcano.Bean.WebPath;
+import com.github.tncrazvan.arcano.Bean.Web.WebMethod;
+import com.github.tncrazvan.arcano.Bean.Web.WebPath;
 import com.github.tncrazvan.arcano.Http.HttpController;
 import com.github.tncrazvan.arcano.Http.HttpResponse;
-import com.github.tncrazvan.arcano.Tool.Action;
-import com.github.tncrazvan.arcano.Tool.JsonTools;
-import static com.github.tncrazvan.arcano.Tool.JsonTools.jsonObject;
-import com.github.tncrazvan.arcano.Tool.ServerFile;
+import com.github.tncrazvan.arcano.Tool.Encoding.JsonTools;
+import static com.github.tncrazvan.arcano.Tool.Encoding.JsonTools.jsonObject;
+
 import static com.github.tncrazvan.arcano.Tool.Strings.uuid;
+import com.github.tncrazvan.arcano.Tool.System.ServerFile;
 import com.github.tncrazvan.arcano.Tool.Zip.ZipArchive;
 import com.google.gson.JsonObject;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import com.github.tncrazvan.arcano.Tool.Actions.TypedAction;
 
 @WebPath(name = "/")
 public class App extends HttpController implements JsonTools{
     @WebPath(name = "/")
     public File main(){
-        return new File(so.webRoot,so.entryPoint);
+        return new File(config.webRoot,config.entryPoint);
     }
     
     @WebPath(name = "/home")
@@ -50,48 +51,45 @@ public class App extends HttpController implements JsonTools{
         String namespace = data.get("namespace").getAsString()+"."+appname.toLowerCase();
         String path = namespace.replaceAll("\\.", "/");
         String mainClass = namespace+".Starter";
-        String pom = new String(new ServerFile(so.webRoot,"metadata/pom-template.xml").read(),so.charset)
+        String pom = new String(new ServerFile(config.webRoot,"metadata/pom-template.xml").read(),config.charset)
                     .replaceAll("\\$namespace", namespace)
                     .replaceAll("\\$appname", appname)
                     .replaceAll("\\$mainClass", mainClass);
 
-        String starter = new String(new ServerFile(so.webRoot,"metadata/Starter.java").read(),so.charset)
+        String starter = new String(new ServerFile(config.webRoot,"metadata/Starter.java").read(),config.charset)
                     .replaceAll("\\$namespace", namespace);
-        String helloWorld = new String(new ServerFile(so.webRoot,"metadata/HelloWorld.java").read(),so.charset)
+        String helloWorld = new String(new ServerFile(config.webRoot,"metadata/HelloWorld.java").read(),config.charset)
                     .replaceAll("\\$namespace", namespace+".Controller");
 
-        String index = new String(new ServerFile(so.webRoot,"metadata/index.html").read(),so.charset);
+        String index = new String(new ServerFile(config.webRoot,"metadata/index.html").read(),config.charset);
 
-        String classpath = new String(new ServerFile(so.webRoot,"metadata/classpath").read(),so.charset);
+        String classpath = new String(new ServerFile(config.webRoot,"metadata/classpath").read(),config.charset);
 
-        String start = new String(new ServerFile(so.webRoot,"metadata/start").read(),so.charset)
+        String start = new String(new ServerFile(config.webRoot,"metadata/start").read(),config.charset)
                         .replaceAll("\\$appname", appname);
-        String update = new String(new ServerFile(so.webRoot,"metadata/update").read(),so.charset)
+        String update = new String(new ServerFile(config.webRoot,"metadata/update").read(),config.charset)
                         .replaceAll("\\$appname", appname);
 
         JsonObject tmp = JsonTools.jsonObject(new String(request.content));
         tmp.remove("appname");
         tmp.remove("namespace");
-        String config = new String(tmp.toString())
+        String json = new String(tmp.toString())
                         .replaceAll(",", ",\n\t")
                         .replaceAll("\\{", "{\n\t")
                         .replaceAll("\\}","\n}");
 
-        archive.addEntry(webRoot+"/"+entryPoint, index,so.charset);
-        archive.addEntry(serverRoot+"/pom.xml",pom,so.charset);
-        archive.addEntry(serverRoot+"/.classpath",classpath,so.charset);
-        archive.addEntry(serverRoot+"/src/main/java/"+path+"/Starter.java",starter,so.charset);
-        archive.addEntry(serverRoot+"/src/main/java/"+path+"/Controller/HelloWorld.java",helloWorld,so.charset);
-        archive.addEntry("http.json", config, so.charset);
-        archive.addEntry("start", start, so.charset);
-        archive.addEntry("update", update, so.charset);
+        archive.addEntry(webRoot+"/"+entryPoint, index, config.charset);
+        archive.addEntry(serverRoot+"/pom.xml",pom, config.charset);
+        archive.addEntry(serverRoot+"/.classpath",classpath, config.charset);
+        archive.addEntry(serverRoot+"/src/main/java/"+path+"/Starter.java",starter, config.charset);
+        archive.addEntry(serverRoot+"/src/main/java/"+path+"/Controller/HelloWorld.java",helloWorld, config.charset);
+        archive.addEntry("http.json", json, config.charset);
+        archive.addEntry("start", start, config.charset);
+        archive.addEntry("update", update, config.charset);
         archive.make();
         ServerFile f = archive.getFile();
-        return new HttpResponse(f).then(new Action<Void>() {
-            @Override
-            public boolean callback(Void o) {
-                return f.delete();
-            }
+        return new HttpResponse(f).then(() -> {
+            f.delete();
         });
     }
 }
