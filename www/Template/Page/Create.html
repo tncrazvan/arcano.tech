@@ -72,28 +72,6 @@
                 <InputField ref="sessionTtl" label="Session TTL" type="number" value="1440">
                     This defines how long (<b>seconds</b>) a session should live.
                 </InputField>
-                <InputField ref="webSocketMtu" label="WS MTU" type="number" value="65536">
-                    This is the Maximum Transmission Unit for WebSockets, which defines<br />
-                    how large in size is the single largest frame <b>sent</b> to the <br />
-                    client or <b>received</b> from the client.
-                    <hr />
-                    <div class="left-text">
-                        This doesn't mean you can't receive messages <b>larger than</b> this <br />
-                        <b>value</b> or that the incoming messages will be <b>split</b> in more pieces.<br />
-                        This value "<i>simply</i>" tells the server how many bytes to read or write at once.
-                    </div>
-                </InputField>
-                <InputField ref="httpMtu" label="Http MTU" type="number" value="65536">
-                    This is the Maximum Transmission Unit for Http request, which defines <br />
-                    how large in size is the single largest frame <b>sent</b> to the <br />
-                    client or <b>received</b> from the client.
-                    <hr />
-                    <div class="left-text">
-                        This doesn't mean you can't receive messages <b>larger than</b> this <br />
-                        <b>value</b> or that the incoming messages will be <b>split</b> in more pieces.<br />
-                        This value "<i>simply</i>" tells the server how many bytes to read or write at once.
-                    </div>
-                </InputField>
                 <InputField ref="threadPoolSize" label="Threads" type="number" value="3">
                     This is the size of your Thread Pool.<br />
                     <hr />
@@ -137,9 +115,6 @@
                             entryPoint: form.ref("entryPoint").value(),
                             charset: form.ref("charset").value(),
                             timeout: form.ref("timeout").value(),
-                            sessionTtl: form.ref("sessionTtl").value(),
-                            webSocketMtu: form.ref("webSocketMtu").value(),
-                            httpMtu: form.ref("httpMtu").value(),
                             threadPoolSize: form.ref("threadPoolSize").value(),
                             sendExceptions: form.ref("sendExceptions").value(),
                             responseWrapper: form.ref("responseWrapper").value()
