@@ -7,4 +7,5 @@ server/dependency-reduced-pom.xml
 server/nbactions.xml
 server/tmp
 server/target
-server/.settings 
+server/.settings
+nohup.out
