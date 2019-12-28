@@ -14,7 +14,6 @@ import com.google.gson.JsonObject;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import com.github.tncrazvan.arcano.Tool.Actions.TypedAction;
 
 @WebPath(name = "/")
 public class App extends HttpController implements JsonTools{

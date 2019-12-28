@@ -5,7 +5,7 @@
  */
 package $namespace;
 
-import com.github.tncrazvan.arcano.Bean.WebPath;
+import com.github.tncrazvan.arcano.Bean.Web.WebPath;
 import com.github.tncrazvan.arcano.Http.HttpController;
 
 /**
