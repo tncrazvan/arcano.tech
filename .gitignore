@@ -9,3 +9,4 @@ server/tmp
 server/target
 server/.settings
 nohup.out
+www/minified/
