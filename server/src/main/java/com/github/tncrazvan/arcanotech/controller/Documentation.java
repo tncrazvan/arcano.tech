@@ -1,7 +1,6 @@
 package com.github.tncrazvan.arcanotech.controller;
 
 import com.github.tncrazvan.arcanotech.database.MySQL;
-import com.github.tncrazvan.arcano.Bean.Web.WebPath;
 import com.github.tncrazvan.arcano.Http.HttpController;
 import static com.github.tncrazvan.arcano.Tool.Http.Status.STATUS_BAD_REQUEST;
 
@@ -10,10 +9,11 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import com.github.tncrazvan.arcano.Bean.Web.HttpPath;
 
-@WebPath(name = "/documentation")
+@HttpPath(name = "/documentation")
 public class Documentation extends HttpController{
-    @WebPath(name = "/explore")
+    @HttpPath(name = "/explore")
     public JsonArray explore() throws SQLException{
         if(!issetRequestQueryString("id")){
             setResponseStatus(STATUS_BAD_REQUEST);

@@ -1,5 +1,9 @@
 {
-	"minify":0,
+	"pack":{
+		"minify": true,
+		"interval": 5000,
+		"script": "minify --type=$_TYPE \"$_FILE\""
+	},
 	"serverRoot":"server",
 	"webRoot":"www",
 	"port":80,

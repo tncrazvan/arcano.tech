@@ -1,7 +1,5 @@
 package com.github.tncrazvan.arcanotech.controller;
 
-import com.github.tncrazvan.arcano.Bean.Web.WebMethod;
-import com.github.tncrazvan.arcano.Bean.Web.WebPath;
 import com.github.tncrazvan.arcano.Http.HttpController;
 import com.github.tncrazvan.arcano.Http.HttpResponse;
 import com.github.tncrazvan.arcano.Tool.Encoding.JsonTools;
@@ -14,32 +12,34 @@ import com.google.gson.JsonObject;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import com.github.tncrazvan.arcano.Bean.Web.HttpMethod;
+import com.github.tncrazvan.arcano.Bean.Web.HttpPath;
 
-@WebPath(name = "/")
+@HttpPath(name = "/")
 public class App extends HttpController implements JsonTools{
-    @WebPath(name = "/")
+    @HttpPath(name = "/")
     public File main(){
         return new File(config.webRoot,config.entryPoint);
     }
     
-    @WebPath(name = "/home")
+    @HttpPath(name = "/home")
     public File home(){
         return main();
     }
     
-    @WebPath(name = "/quick")
+    @HttpPath(name = "/quick")
     public File quick(){
         return main();
     }
     
-    @WebMethod(name = "GET")
-    @WebPath(name = "/create")
+    @HttpMethod(name = "GET")
+    @HttpPath(name = "/create")
     public File createGET(){
         return main();
     }
     
-    @WebMethod(name = "POST")
-    @WebPath(name = "/create")
+    @HttpMethod(name = "POST")
+    @HttpPath(name = "/create")
     public HttpResponse createPOST() throws FileNotFoundException, IOException{
         ZipArchive archive = new ZipArchive(uuid()+"");
         JsonObject data = jsonObject(new String(request.content));
