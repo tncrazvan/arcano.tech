@@ -5,16 +5,16 @@
  */
 package $namespace;
 
-import com.github.tncrazvan.arcano.Bean.Web.WebPath;
+import com.github.tncrazvan.arcano.Bean.Web.HttpPath;
 import com.github.tncrazvan.arcano.Http.HttpController;
 
 /**
  *
  * @author Administrator
  */
-@WebPath(name = "/helloworld")
+@HttpPath(name = "/helloworld")
 public class HelloWorld extends HttpController{
-    @WebPath(name = "/test")
+    @HttpPath(name = "/test")
     public String test(){
         return "Hello World, this is a test!";
     }
