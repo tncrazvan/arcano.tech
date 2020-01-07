@@ -63,42 +63,42 @@
             Make a new instance of the <b>Server</b> class and pass it your controller classes<br />
             <coding language="java">package com.github.tncrazvan.helloworld;
             
-import com.github.tncrazvan.arcano.Bean.Web;
+import com.github.tncrazvan.arcano.Bean.Bean.HttpPath;
 import com.github.tncrazvan.arcano.Http.HttpController;
-import com.github.tncrazvan.arcano.Server;
+import com.github.tncrazvan.arcano.Arcano;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.security.NoSuchAlgorithmException;
 
 public class HelloWorld {
 
-    @Web(path = "/hello")
+    @HttpPath(name = "/hello")
     public class Hello extends HttpController{
-        @Web(path = "/")
+        @HttpPath(name = "/")
         public String main(){
             return "hello world!";
         }
     }
 
-    @Web(path = "/hello2")
+    @HttpPath(name = "/hello2")
     public class Hello2 extends HttpController{
-        @Web(path = "/")
+        @HttpPath(name = "/")
         public String main(){
             return "hello world 2!";
         }
 
-        @Web(path = "/name")
+        @HttpPath(name = "/name")
         public String name(){
             return "hello, my name is Arcano!";
         }
     }
 
     public static void main(String[] args) throws IOException, NoSuchAlgorithmException, ClassNotFoundException, URISyntaxException {
-        Server s = new Server(
+        Arcano s = new Arcano(
+            new String[]{"/path/to/your/http.json"},
             Hello.class,
             Hello2.class
         );
-        s.listen(new String[]{"/path/to/your/http.json"});
     }
 }</coding><br /><br />
             Now compile your application and run it with <coding language="bash">java -jar app.jar</coding><br />
