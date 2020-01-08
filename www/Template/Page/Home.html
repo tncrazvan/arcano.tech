@@ -104,9 +104,7 @@ public class HelloWorld {
             Now compile your application and run it with <coding language="bash">java -jar app.jar</coding><br />
             Alternativaly you can run the <b>start</b> script: <coding language="bash">sudo ./start</coding>, it will compile and run your application automatically.
             You should get an output similar to this:<br />
-            <coding language="xml">Server started.
-Files glued but not minified.
-Server will minify files in background once every 5000ms.
+            <coding language="xml">
 +-----------------+------------------------------------------------------------------------------------------------------------------------+
 | KEY             | VALUE                                                                                                                  |
 +-----------------+------------------------------------------------------------------------------------------------------------------------+
@@ -228,6 +226,9 @@ Server will minify files in background once every 5000ms.
 |                 | | GET          | /@get/file               | com.github.tncrazvan.arcano.Controller.Http.Get.file                     | |
 |                 | +--------------+--------------------------+--------------------------------------------------------------------------+ |
 +-----------------+------------------------------------------------------------------------------------------------------------------------+
+Server started.
+Files glued but not minified.
+Server will minify files in background once every 5000ms.
 </coding><br /><br />
             All the fields you see in the resulting table, except for "Routes", are configurations you can modify in your <b>http.json</b> file.
             The names match exactly, so if you want to change your "threadPoolSize" property, you can do just that by defining it in your configuration file.
