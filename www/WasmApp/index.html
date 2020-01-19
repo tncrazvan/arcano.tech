@@ -8,7 +8,7 @@
 </head>
 <body>
     <script>
-        WebAssembly.instantiateStreaming(fetch("/WasmApp/build/optimized.wasm"), {
+        WebAssembly.instantiateStreaming(fetch("build/optimized.wasm"), {
             main: {
                 sayHello() {
                 console.log("Hello from WebAssembly!");
