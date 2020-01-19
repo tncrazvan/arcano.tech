@@ -15,7 +15,6 @@ import java.io.IOException;
 import com.github.tncrazvan.arcano.Bean.Web.HttpMethod;
 import com.github.tncrazvan.arcano.Bean.Web.HttpPath;
 
-@HttpPath(name = "/")
 public class App extends HttpController implements JsonTools{
     @HttpPath(name = "/")
     public File main(){

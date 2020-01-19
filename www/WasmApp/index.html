@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>WasmApp</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+</head>
+<body>
+    <script>
+        WebAssembly.instantiateStreaming(fetch("/WasmApp/build/optimized.wasm"), {
+            main: {
+                sayHello() {
+                console.log("Hello from WebAssembly!");
+                }
+            },
+            env: {
+                abort(_msg, _file, line, column) {
+                    console.error("abort called at "+_file+":" + line + ":" + column+"\nMessage:"+_msg);
+                    console.error();
+                }
+            },
+        }).then(result => {
+            const exports = result.instance.exports;
+            console.log(exports.add(19, 23));
+        }).catch(console.error);
+    </script>
+</body>
+</html>

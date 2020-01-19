@@ -5,7 +5,6 @@
     <artifactId>ArcanoTech</artifactId>
     <version>1.0.0</version>
     <packaging>jar</packaging>
-
     <build>
         <plugins>
             <plugin>
@@ -66,9 +65,28 @@
             <name>Arcano</name>
             <url>https://raw.githubusercontent.com/tncrazvan/Arcano/maven-repository/</url>
         </repository>
+        
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+        <repository>
+            <id>jcenter.bintray.com</id>
+            <url>https://jcenter.bintray.com</url>
+        </repository>
     </repositories>
     
     <dependencies>
+        <dependency>
+            <groupId>com.github.i-net-software</groupId>
+            <artifactId>jwebassembly-api</artifactId>
+            <version>master-SNAPSHOT</version>
+        </dependency>
+        <dependency>
+            <groupId>de.inetsoftware</groupId>
+            <artifactId>jwebassembly-compiler</artifactId>
+            <version>0.1</version>
+        </dependency>
         <dependency>
             <groupId>com.github.tncrazvan</groupId>
             <artifactId>Arcano</artifactId>
