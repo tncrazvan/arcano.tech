@@ -1,1 +1,2 @@
+cd server
 mvn dependency:purge-local-repository clean install
