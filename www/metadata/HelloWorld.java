@@ -12,9 +12,8 @@ import com.github.tncrazvan.arcano.Http.HttpController;
  *
  * @author Administrator
  */
-@HttpPath(name = "/helloworld")
 public class HelloWorld extends HttpController{
-    @HttpPath(name = "/test")
+    @HttpPath(name = "/helloworld/test")
     public String test(){
         return "Hello World, this is a test!";
     }
