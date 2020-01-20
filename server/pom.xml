@@ -78,16 +78,6 @@
     
     <dependencies>
         <dependency>
-            <groupId>com.github.i-net-software</groupId>
-            <artifactId>jwebassembly-api</artifactId>
-            <version>master-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>de.inetsoftware</groupId>
-            <artifactId>jwebassembly-compiler</artifactId>
-            <version>0.1</version>
-        </dependency>
-        <dependency>
             <groupId>com.github.tncrazvan</groupId>
             <artifactId>Arcano</artifactId>
             <version>1.1.0</version>
