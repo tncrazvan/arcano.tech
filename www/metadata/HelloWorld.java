@@ -5,7 +5,7 @@
  */
 package $namespace;
 
-import com.github.tncrazvan.arcano.Bean.Web.HttpService;
+import com.github.tncrazvan.arcano.Bean.Http.HttpService;
 import com.github.tncrazvan.arcano.Http.HttpController;
 
 /**
@@ -13,7 +13,7 @@ import com.github.tncrazvan.arcano.Http.HttpController;
  * @author Administrator
  */
 public class HelloWorld extends HttpController{
-    @HttpService(path = "/helloworld/test", name = "GET")
+    @HttpService(path = "/helloworld/test", method = "GET")
     public String test(){
         return "Hello World, this is a test!";
     }
