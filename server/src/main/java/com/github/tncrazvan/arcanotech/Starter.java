@@ -10,8 +10,7 @@ public class Starter extends HttpController{
         new Arcano(
             args,
             App.class,
-            Documentation.class,
-            Starter.class
+            Documentation.class
         );
     }
 }

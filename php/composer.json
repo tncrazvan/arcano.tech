@@ -1,0 +1,12 @@
+{
+    "name": "administrator/php",
+    "authors": [
+        {
+            "name": "Razvan",
+            "email": "tangent.jotey@gmail.com"
+        }
+    ],
+    "require": {
+		"tncrazvan/jphp":"dev-master"
+    }
+}

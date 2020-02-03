@@ -12,36 +12,33 @@ import com.google.gson.JsonObject;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import com.github.tncrazvan.arcano.Bean.Web.HttpMethod;
-import com.github.tncrazvan.arcano.Bean.Web.HttpPath;
+import com.github.tncrazvan.arcano.Bean.Http.HttpService;
 
 public class App extends HttpController implements JsonTools{
-    @HttpPath(name = "/")
+    @HttpService(path = "/@")
     public File main(){
         return new File(config.webRoot,config.entryPoint);
     }
     
-    @HttpPath(name = "/home")
+    @HttpService(path = "/@home")
     public File home(){
         return main();
     }
     
-    @HttpPath(name = "/quick")
+    @HttpService(path = "/@quick")
     public File quick(){
         return main();
     }
     
-    @HttpMethod(name = "GET")
-    @HttpPath(name = "/create")
+    @HttpService(path = "/@create")
     public File createGET(){
         return main();
     }
     
-    @HttpMethod(name = "POST")
-    @HttpPath(name = "/create")
+    @HttpService(path = "/@create", method = "POST")
     public HttpResponse createPOST() throws FileNotFoundException, IOException{
         ZipArchive archive = new ZipArchive(uuid()+"");
-        JsonObject data = jsonObject(new String(request.content));
+        JsonObject data = jsonObject(new String(reader.request.content));
         String serverRoot = data.get("serverRoot").getAsString();
         String webRoot = data.get("webRoot").getAsString();
         String entryPoint = data.get("entryPoint").getAsString();
@@ -68,7 +65,7 @@ public class App extends HttpController implements JsonTools{
         String update = new String(new ServerFile(config.webRoot,"metadata/update").read(),config.charset)
                         .replaceAll("\\$appname", appname);
 
-        JsonObject tmp = JsonTools.jsonObject(new String(request.content));
+        JsonObject tmp = JsonTools.jsonObject(new String(reader.request.content));
         tmp.remove("appname");
         tmp.remove("namespace");
         String json = new String(tmp.toString())

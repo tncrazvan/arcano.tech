@@ -1,0 +1,55 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
+        "This file is @generated automatically"
+    ],
+    "content-hash": "9403a2d3e7678e135334dc44bea54e59",
+    "packages": [
+        {
+            "name": "tncrazvan/jphp",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/tncrazvan/jphp.git",
+                "reference": "a89699d7eafdb7724cdc42c245ad41a93b80f658"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/tncrazvan/jphp/zipball/a89699d7eafdb7724cdc42c245ad41a93b80f658",
+                "reference": "a89699d7eafdb7724cdc42c245ad41a93b80f658",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "": [
+                        "."
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Razvan",
+                    "email": "tangent.jotey@gmail.com"
+                }
+            ],
+            "description": "A simple library that manages reading STDIN from Java Arcano and serving the outputs",
+            "time": "2020-01-30T20:56:47+00:00"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "stable",
+    "stability-flags": {
+        "tncrazvan/jphp": 20
+    },
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": [],
+    "platform-dev": []
+}
