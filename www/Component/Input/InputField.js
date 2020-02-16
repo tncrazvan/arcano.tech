@@ -1,5 +1,5 @@
-Components.$init("/Input/InputField",function(){
-    this.extends("/Input/ToolTip");
+Components.$init("/InputField",function(){
+    this.extends("/ToolTip");
     let $this=this;
     let id = uuid();
     let type="text";

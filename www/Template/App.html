@@ -1,7 +1,7 @@
 <App export replace>
-    <SideMenu></SideMenu>
+    <SideMenu @namespace="/Menu"></SideMenu>
     <Container>
-        <TopMenu></TopMenu>
+        <TopMenu @namespace="/Menu"></TopMenu>
         <MainContent :if="this.state === this.STATE_HOME">
             <PageHome></PageHome>
         </MainContent>

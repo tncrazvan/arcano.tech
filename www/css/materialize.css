@@ -2068,11 +2068,11 @@
 }
 
 .grey.lighten-2 {
-  background-color: #e0e0e0 !important;
+  background-color: #4b9cd2 !important;
 }
 
 .grey-text.text-lighten-2 {
-  color: #e0e0e0 !important;
+  color: #4b9cd2 !important;
 }
 
 .grey.lighten-1 {
@@ -2681,7 +2681,7 @@ a {
 .divider {
   height: 1px;
   overflow: hidden;
-  background-color: #e0e0e0;
+  background-color: #4b9cd2;
 }
 
 blockquote {
@@ -3080,7 +3080,7 @@ td, th {
 
 .collection {
   margin: 0.5rem 0 1rem 0;
-  border: 1px solid #e0e0e0;
+  border: 1px solid #4b9cd2;
   border-radius: 2px;
   overflow: hidden;
   position: relative;
@@ -3091,7 +3091,7 @@ td, th {
   line-height: 1.5rem;
   padding: 10px 20px;
   margin: 0;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #4b9cd2;
 }
 
 .collection .collection-item.avatar {
@@ -3159,7 +3159,7 @@ td, th {
 
 .collection.with-header .collection-header {
   background-color: #fff;
-  border-bottom: 1px solid #e0e0e0;
+  border-bottom: 1px solid #4b9cd2;
   padding: 10px 20px;
 }
 
@@ -8326,7 +8326,7 @@ input[type=range]::-ms-thumb {
 }
 
 .slider .slides li .caption p {
-  color: #e0e0e0;
+  color: #4b9cd2;
 }
 
 .slider .slides li.active {
@@ -8349,7 +8349,7 @@ input[type=range]::-ms-thumb {
   height: 16px;
   width: 16px;
   margin: 0 12px;
-  background-color: #e0e0e0;
+  background-color: #4b9cd2;
   -webkit-transition: background-color .3s;
   transition: background-color .3s;
   border-radius: 50%;

@@ -7,7 +7,7 @@ Components.$init("/Menu/TopMenu",function(){
         buttons.forEach(button => {
             i -= 5;
             button.css({
-                backgroundColor: "#0f1114",
+                backgroundColor: "#2e1b43",
                 left: pixel(i)
             });
             button.onclick=e=>{

@@ -1,4 +1,4 @@
-Components.$init("/Input/ToolTip",function(){
+Components.$init("/ToolTip",function(){
     let tooltipHTML;
     let position = "top";
     if(this.innerHTML.trim() !== ""){

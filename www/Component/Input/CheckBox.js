@@ -1,5 +1,5 @@
-Components.$init("/Input/CheckBox",function(){
-    this.extends("/Input/ToolTip");
+Components.$init("/CheckBox",function(){
+    this.extends("/ToolTip");
     let $this=this;
     let id = uuid();
     if(this.hasAttribute("type"))

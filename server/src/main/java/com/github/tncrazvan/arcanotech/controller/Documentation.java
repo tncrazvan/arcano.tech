@@ -12,7 +12,7 @@ import java.sql.SQLException;
 import com.github.tncrazvan.arcano.Bean.Http.HttpService;
 
 public class Documentation extends HttpController{
-    @HttpService(path = "/@documentation/explore")
+    @HttpService(path = "/documentation/explore")
     public JsonArray explore() throws SQLException{
         if(!issetRequestQueryString("id")){
             setResponseStatus(STATUS_BAD_REQUEST);

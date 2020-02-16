@@ -1,4 +1,4 @@
-Components.$init("/Code/Coding",function(){
+Components.$init("/Coding",function(){
     this.$onReady=async function(){
         let html = this.innerHTML;
         let language = this.hasAttribute("language")?this.getAttribute("language"):"plaintext";

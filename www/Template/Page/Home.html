@@ -10,14 +10,14 @@
         <li class="collection-item">
             <h6>Make sure you have JDK 8+ installed</h6>
             You can download the latest JDK from the official oracle website.<br />
-            <a btn target="_blank" href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
+            <a btn target="_blank" :extends="PrimaryButton" href="https://www.oracle.com/technetwork/java/javase/downloads/index.html">Download JDK</a>
         </li>
         <li class="collection-item">
             <h6>Install Maven</h6>
             In order to import the server library in your project you'll need Maven, a java dependency manager.<br /><br />
             
             You can download the latest JDK from the official oracle website.<br />
-            <a btn target="_blank" href="https://maven.apache.org/download.cgi">Download Maven</a>
+            <a btn target="_blank" :extends="PrimaryButton" href="https://maven.apache.org/download.cgi">Download Maven</a>
         </li>
         <li class="collection-item">
             <h6>Make a new project</h6>
@@ -72,32 +72,32 @@ import java.security.NoSuchAlgorithmException;
 
 public class HelloWorld {
 
-    @HttpPath(name = "/hello")
+    @HttpService(path = "/")
     public class Hello extends HttpController{
-        @HttpPath(name = "/")
+        @HttpService(path = "/hello")
         public String main(){
             return "hello world!";
         }
     }
 
-    @HttpPath(name = "/hello2")
+    @HttpService(path = "/hello2")
     public class Hello2 extends HttpController{
-        @HttpPath(name = "/")
+        @HttpService(path = "/")
         public String main(){
             return "hello world 2!";
         }
 
-        @HttpPath(name = "/name")
+        @HttpService(path = "/name")
         public String name(){
             return "hello, my name is Arcano!";
         }
     }
 
-    public static void main(String[] args) throws IOException, NoSuchAlgorithmException, ClassNotFoundException, URISyntaxException {
-        Arcano s = new Arcano(
-            new String[]{"/path/to/your/http.json"},
-            Hello.class,
-            Hello2.class
+    public static void main(String[] args) {
+        Arcano server = new Arcano(
+            new String[]{"/path/to/your/http.json"},    //configuration file
+            Hello.class,    //exposed class
+            Hello2.class,   //exposed class
         );
     }
 }</coding><br /><br />
