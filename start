@@ -1,3 +1,1 @@
-cd server
-mvn install
-java -jar target/ArcanoTech-1.0.0.jar ../http.json
+java -jar java/target/ArcanoTech-1.0.0.jar ./http.json

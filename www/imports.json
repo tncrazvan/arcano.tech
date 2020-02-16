@@ -1,0 +1,30 @@
+[
+    "/css/fonts/roboto.css",
+    "/css/fontawesome.css",
+    "/css/materialize.css",
+    "/css/highlighter.css",
+    "/css/hopscotch.css",
+    "/css/card.css",
+    "/css/style.css",
+    
+    "/js/Elk/Main.js",
+    "/js/materialize.min.js",
+    "/js/highlighter.js",
+    
+    "/js/Component/Footer.js",
+    "/js/Component/Button/PrimaryButton.js",
+    "/js/Component/Button/SecondaryButton.js",
+    "/js/Component/Menu/TopMenu.js",
+    "/js/Component/Menu/SideMenu.js",
+    "/js/Component/Anchor.js",
+    "/js/Component/Code/Coding.js",
+    "/js/Component/MainContent.js",
+    "/js/Component/Page/Home.js",
+    "/js/Component/Page/Quick.js",
+    "/js/Component/Page/Create.js",
+    "/js/Component/Input/ToolTip.js",
+    "/js/Component/Input/InputField.js",
+    "/js/Component/Input/CheckBox.js",
+
+    "/js/app.js"
+]

@@ -1,9 +1,4 @@
 {
-	"pack":{
-		"minify": true,
-		"interval": 5000,
-		"script": "minify --type=@type \"@filename\""
-	},
 	"serverRoot":"server",
 	"webRoot":"www",
 	"port":80,

@@ -1,2 +1,2 @@
-cd server
+cd java
 mvn dependency:purge-local-repository clean install
