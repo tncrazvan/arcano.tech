@@ -1,2 +1,3 @@
 cd java
 mvn dependency:resolve
+mvn dependency:purge-local-repository clean install
