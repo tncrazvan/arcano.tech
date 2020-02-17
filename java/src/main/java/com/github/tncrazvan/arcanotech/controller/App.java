@@ -53,23 +53,27 @@ public class App extends HttpController implements JsonTools{
         String namespace = data.get("namespace").getAsString()+"."+appname.toLowerCase();
         String path = namespace.replaceAll("\\.", "/");
         String mainClass = namespace+".Starter";
-        String pom = new String(new ServerFile(reader.so.config.webRoot,"metadata/pom-template.xml").read(),reader.so.config.charset)
+        String pom = new String(new ServerFile(reader.so.config.webRoot,"assets/metadata/pom-template.xml").read(),reader.so.config.charset)
                     .replaceAll("\\$namespace", namespace)
                     .replaceAll("\\$appname", appname)
                     .replaceAll("\\$mainClass", mainClass);
 
-        String starter = new String(new ServerFile(reader.so.config.webRoot,"metadata/Starter.java").read(),reader.so.config.charset)
+        String starter = new String(new ServerFile(reader.so.config.webRoot,"assets/metadata/Starter.java").read(),reader.so.config.charset)
                     .replaceAll("\\$namespace", namespace);
-        String helloWorld = new String(new ServerFile(reader.so.config.webRoot,"metadata/HelloWorld.java").read(),reader.so.config.charset)
+        String helloWorld = new String(new ServerFile(reader.so.config.webRoot,"assets/metadata/HelloWorld.java").read(),reader.so.config.charset)
                     .replaceAll("\\$namespace", namespace+".Controller");
 
-        String index = new String(new ServerFile(reader.so.config.webRoot,"metadata/index.html").read(),reader.so.config.charset);
+        String index = new String(new ServerFile(reader.so.config.webRoot,"assets/metadata/index.html").read(),reader.so.config.charset);
 
-        String classpath = new String(new ServerFile(reader.so.config.webRoot,"metadata/classpath").read(),reader.so.config.charset);
+        String classpath = new String(new ServerFile(reader.so.config.webRoot,"assets/metadata/classpath").read(),reader.so.config.charset);
 
-        String start = new String(new ServerFile(reader.so.config.webRoot,"metadata/start").read(),reader.so.config.charset)
+        String start = new String(new ServerFile(reader.so.config.webRoot,"assets/metadata/start").read(),reader.so.config.charset)
                         .replaceAll("\\$appname", appname);
-        String update = new String(new ServerFile(reader.so.config.webRoot,"metadata/update").read(),reader.so.config.charset)
+        String update = new String(new ServerFile(reader.so.config.webRoot,"assets/metadata/update").read(),reader.so.config.charset)
+                        .replaceAll("\\$appname", appname);
+        String install = new String(new ServerFile(reader.so.config.webRoot,"assets/metadata/install").read(),reader.so.config.charset)
+                        .replaceAll("\\$appname", appname);
+        String imports = new String(new ServerFile(reader.so.config.webRoot,"assets/metadata/imports.json").read(),reader.so.config.charset)
                         .replaceAll("\\$appname", appname);
 
         JsonObject tmp = JsonTools.jsonObject(new String(reader.request.content));
@@ -79,7 +83,8 @@ public class App extends HttpController implements JsonTools{
                         .replaceAll(",", ",\n\t")
                         .replaceAll("\\{", "{\n\t")
                         .replaceAll("\\}","\n}");
-
+        String js = "console.log('This is app!');";
+        String css = "";
         archive.addEntry(webRoot+"/"+entryPoint, index, reader.so.config.charset);
         archive.addEntry(serverRoot+"/pom.xml",pom, reader.so.config.charset);
         archive.addEntry(serverRoot+"/.classpath",classpath, reader.so.config.charset);
@@ -88,6 +93,12 @@ public class App extends HttpController implements JsonTools{
         archive.addEntry("http.json", json, reader.so.config.charset);
         archive.addEntry("start", start, reader.so.config.charset);
         archive.addEntry("update", update, reader.so.config.charset);
+        archive.addEntry("install", install, reader.so.config.charset);
+        archive.addEntry(webRoot+"/imports.json", imports, reader.so.config.charset);
+        archive.addEntry(webRoot+"/js/app.json", js, reader.so.config.charset);
+        archive.addEntry(webRoot+"/css/style.css", css, reader.so.config.charset);
+        archive.addEntry(webRoot+"/pack/main.css", css, reader.so.config.charset);
+        archive.addEntry(webRoot+"/pack/main.js", js, reader.so.config.charset);
         archive.make();
         ServerFile f = archive.getFile();
         return new HttpResponse(f).then(() -> {

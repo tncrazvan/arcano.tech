@@ -1,5 +1,5 @@
 {
-	"serverRoot":"server",
+	"serverRoot":"java",
 	"webRoot":"www",
 	"port":80,
 	"bindAddress":"::",

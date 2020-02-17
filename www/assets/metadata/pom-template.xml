@@ -32,6 +32,9 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                             <mainClass>$mainClass</mainClass>
+                            <arguments>
+                                <argument>../http.json</argument>
+                            </arguments>
                         </manifest>
                     </archive>
                 </configuration>
@@ -41,7 +44,10 @@
                 <configuration>
                     <archive>
                       <manifest>
-                          <mainClass>$mainClass</mainClass>
+                            <mainClass>$mainClass</mainClass>
+                            <arguments>
+                                <argument>../http.json</argument>
+                            </arguments>
                       </manifest>
                     </archive>
                     <descriptorRefs>
@@ -55,6 +61,9 @@
                 <version>1.6.0</version>
                 <configuration>
                     <mainClass>$mainClass</mainClass>
+                    <arguments>
+                        <argument>../http.json</argument>
+                    </arguments>
                 </configuration>
             </plugin>
         </plugins>
