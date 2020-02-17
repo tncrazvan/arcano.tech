@@ -5,9 +5,9 @@ import $namespace.Controller.HelloWorld;
 
 public class Starter{
     public static void main(final String[] args) {
-        new Arcano(
-            args,
-            HelloWorld.class
-        );
+        Arcano server = new Arcano(Starter.class.getPackage());
+        server.listen(args,(so) -> {
+            so.config.pack("imports.json");
+        });
     }
 }

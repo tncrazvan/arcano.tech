@@ -31,6 +31,9 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                             <mainClass>com.github.tncrazvan.arcanotech.Starter</mainClass>
+                            <arguments>
+                                <argument>../http.json</argument>
+                            </arguments>
                         </manifest>
                     </archive>
                 </configuration>
@@ -40,7 +43,10 @@
                 <configuration>
                     <archive>
                       <manifest>
-                          <mainClass>com.github.tncrazvan.arcanotech.Starter</mainClass>
+                            <mainClass>com.github.tncrazvan.arcanotech.Starter</mainClass>
+                            <arguments>
+                                <argument>../http.json</argument>
+                            </arguments>
                       </manifest>
                     </archive>
                     <descriptorRefs>
@@ -54,6 +60,9 @@
                 <version>1.6.0</version>
                 <configuration>
                     <mainClass>com.github.tncrazvan.arcanotech.Starter</mainClass>
+                    <arguments>
+                        <argument>../http.json</argument>
+                    </arguments>
                 </configuration>
             </plugin>
         </plugins>

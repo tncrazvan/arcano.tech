@@ -15,11 +15,18 @@ import java.io.IOException;
 import com.github.tncrazvan.arcano.Bean.Http.HttpService;
 
 public class App extends HttpController implements JsonTools{
+    
+
     @HttpService(path = "/")
     public File main(){
         return new File(reader.so.config.webRoot,reader.so.config.entryPoint);
     }
     
+    @HttpService(path = "")
+    public File empty(){
+        return main();
+    }
+
     @HttpService(path = "/home")
     public File home(){
         return main();

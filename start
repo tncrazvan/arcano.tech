@@ -1,1 +1,2 @@
-java -jar java/target/ArcanoTech-1.0.0.jar ./http.json
+cd java
+mvn exec:java -D"exec.mainClass"="com.github.tncrazvan.arcanotech.Starter"
