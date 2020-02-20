@@ -32,9 +32,6 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                             <mainClass>$mainClass</mainClass>
-                            <arguments>
-                                <argument>../http.json</argument>
-                            </arguments>
                         </manifest>
                     </archive>
                 </configuration>

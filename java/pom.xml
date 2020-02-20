@@ -31,9 +31,6 @@
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                             <mainClass>com.github.tncrazvan.arcanotech.Starter</mainClass>
-                            <arguments>
-                                <argument>../http.json</argument>
-                            </arguments>
                         </manifest>
                     </archive>
                 </configuration>
