@@ -8,4 +8,5 @@ java/nbactions.xml
 java/tmp
 java/target
 java/.settings
+www/pack/
 nohup.out
