@@ -74,16 +74,6 @@
                 <InputField ref="sessionTtl" label="Session TTL" type="number" value="1440">
                     This defines how long (<b>seconds</b>) a session should live.
                 </InputField>
-                <CheckBox ref="sendExceptions" label="Send Exceptions" checked="checked">
-                    Check this if you want your server to send detailed information <br />
-                    to the client whenever an Exception (that is not internally catched) <br />
-                    triggers inside a controller.
-                </CheckBox>
-                <CheckBox ref="responseWrapper" label="Response Wrapper">
-                    Check this if you want your server to wrap all <br />
-                    the response messages in  JavaScript Object Notation (JSON)
-                </CheckBox>
-                <br />
             </div><br />
             <hr />
             <br />
@@ -94,58 +84,68 @@
                 <PrimaryButton id="download" style="text-align: center;">
                     <span id="downloadText">Download</span>
                 </PrimaryButton>
-                <script>
-                    download.addEventListener("click",async ()=>{
-                        let tmp = {
-                            serverRoot: "java",
-                            webRoot: form.ref("webRoot").value(),
-                            namespace: form.ref("namespace").value(),
-                            appname: form.ref("appname").value(),
-                            port: form.ref("port").value(),
-                            bindAddress: form.ref("bindAddress").value(),
-                            entryPoint: form.ref("entryPoint").value(),
-                            charset: form.ref("charset").value(),
-                            timeout: form.ref("timeout").value(),
-                            sendExceptions: form.ref("sendExceptions").value(),
-                            responseWrapper: form.ref("responseWrapper").value()
-                        };
-
-                        let data = {};
-                        Object.keys(tmp).map(key => {
-                            if(tmp[key] !== null && tmp[key] !== "")
-                                data[key] = tmp[key];
-                        });
-
-                        console.log(data);
-
-                        let content = JSON.stringify(data);
-                        download.style.display="none";
-                        sendingAnimation.style.display="";
-                        const request = await fetch("/create",{
-                            method: "POST",
-                            body: content
-                        });
-                        const blob = await request.blob();
-                        const b64 = window.URL.createObjectURL(blob);
-                        const a = create("a");
-                        a.href = b64;
-                        let filename = form.ref("appname").value();
-                        a.download = (filename===""?"app":filename)+".zip";
-                        a.click();
-                        window.URL.revokeObjectURL(b64);
-                        download.style.display="";
-                        sendingAnimation.style.display="none";
-                    });
-                </script>
             </div>
         </div>
         <div class="card-reveal">
             <PrimaryButton style="float:right" class="card-title">
                 <i class="material-icons">close</i>
             </PrimaryButton>
-            <div style="padding: 1em">
-                This feature is not yet available.
+                
+            <div id="form_hidden" class="cols-2">
+                <CheckBox ref="sendExceptions" label="Send Exceptions" checked="checked">
+                    Check this if you want your server to send detailed information <br />
+                    to the client whenever an Exception (that is not internally catched) <br />
+                    triggers inside a controller.
+                </CheckBox>
+                <CheckBox ref="responseWrapper" label="Response Wrapper">
+                    Check this if you want your server to wrap all <br />
+                    the response messages in JavaScript Object Notation (JSON)
+                </CheckBox>
             </div>
         </div>
+        
+        <script>
+            download.addEventListener("click",async ()=>{
+                let tmp = {
+                    serverRoot: "java",
+                    webRoot: form.ref("webRoot").value(),
+                    namespace: form.ref("namespace").value(),
+                    appname: form.ref("appname").value(),
+                    port: form.ref("port").value(),
+                    bindAddress: form.ref("bindAddress").value(),
+                    entryPoint: form.ref("entryPoint").value(),
+                    charset: form.ref("charset").value(),
+                    timeout: form.ref("timeout").value(),
+                    sendExceptions: form.ref("sendExceptions").value(),
+                    responseWrapper: form.ref("responseWrapper").value()
+                };
+
+                let data = {};
+                Object.keys(tmp).map(key => {
+                    if(tmp[key] !== null && tmp[key] !== "")
+                        data[key] = tmp[key];
+                });
+
+                console.log(data);
+
+                let content = JSON.stringify(data);
+                download.style.display="none";
+                sendingAnimation.style.display="";
+                const request = await fetch("/create",{
+                    method: "POST",
+                    body: content
+                });
+                const blob = await request.blob();
+                const b64 = window.URL.createObjectURL(blob);
+                const a = create("a");
+                a.href = b64;
+                let filename = form.ref("appname").value();
+                a.download = (filename===""?"app":filename)+".zip";
+                a.click();
+                window.URL.revokeObjectURL(b64);
+                download.style.display="";
+                sendingAnimation.style.display="none";
+            });
+        </script>
     </div>
 </div>
