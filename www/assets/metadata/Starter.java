@@ -15,7 +15,7 @@ public class Starter{
     IllegalArgumentException, InvocationTargetException, IllegalAccessException {
         Arcano server = new Arcano(Starter.class.getPackage());
         server.listen(args,(so) -> {
-            so.config.pack("imports.json");
+            so.config.pack(so.config.webRoot,"imports.json");
             return 100L;
         });
     }
