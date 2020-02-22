@@ -165,7 +165,9 @@ public class HelloWorld {
                     passed to the <b>listen</b> method is a method that will run on it's own thread (separated from the Threap Pool Executor)
                     every &lt;<b>whatever number you <u>return</u></b>&gt; milliseconds.<br />
                     In this example I'm using <coding language="java">so.config.pack</coding> which is a builtin method that grabs all entries from a json array in a specific file and packs all the specified <b>.js</b> and <b>.css</b>
-                    files in their relative <b>$webRoot/pack/main.js</b> and <b>$webRoot/pack/main.css</b> files.<br /><br />
+                    files in their relative <b>pack/main.js</b> and <b>pack/main.css</b> files.<br />
+                    The <b>pack</b> directory is relative to the input file, in this case it's relative to <b>imports.json</b> (which is located in the $webRoot).
+                    <br /><br />
 
                     Since I'm returning <coding language="java">return 100L;</coding> this piece of code will run every 100ms.
                 </li>
