@@ -13,8 +13,8 @@ public class Starter extends HttpController{
     IllegalArgumentException, InvocationTargetException, IllegalAccessException {
         Arcano server = new Arcano(Starter.class.getPackage());
         server.listen(args,(so) -> {
-            so.config.pack("imports.json");
-            return 100L;
+            so.config.pack(so.config.webRoot,"imports.json");
+            return 1000L;
         });
     }
 }

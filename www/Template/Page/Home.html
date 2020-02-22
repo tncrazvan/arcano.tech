@@ -3,8 +3,8 @@
     <p>
         Arcano is a lightweight web server written in Java.<br />
         It offers a few unique features such as an MVC design pattern, a WebSocket API, 
-        a Http API and and Php scripting API, which allows your http controllers to read the standard output of your php scripts and redirect it
-        as an http response, much like apache servers do.
+        a Http API and a shell scripting API, which allows your http controllers to read the standard output of your shell scripts and redirect it
+        as an http response, much like apache servers do with php script (<i>yes you can <u>technically</u> execute php scripts with this</i>).
     </p>
     <SectionTitle>How to start</SectionTitle>
     <ul class="collection">
@@ -21,29 +21,84 @@
             <a btn target="_blank" :extends="PrimaryButton" href="https://maven.apache.org/download.cgi">Download Maven</a>
         </li>
         <li class="collection-item">
-            <h6>Make a new project</h6>
-            After making a new project in your IDE, you'll have to modify your <b>pon.xml</b> file in 
-            order to add the Arcano dependency.
-            <hr/>
+            <h6>Make a new Maven project</h6>
+            You have 3 options.
+            <ul class="collection">
+                <li class="collection-item">
+                    More often than not your IDE will have some way of automatically create a Maven project for you, for example 
+                    <a href="https://netbeans.org/downloads" target="_blank">NetBeans</a> comes with a default Maven project template.<br />
+                </li>
+                <li class="collection-item">
+                    If your IDE does not offer a quick way to create a Maven project you can just make one from your terminal like so:<br />
+<coding language="bash">mvn archetype:generate 
+-DgroupId={project-packaging}
+-DartifactId={project-name}
+-DarchetypeArtifactId={maven-template} 
+-DinteractiveMode=false</coding><br />
+                This will setup a new maven project and directory layout.
+                </li>
+                <li class="collection-item">
+                    You can also use the 
+                    <PrimaryButton onclick="button_create.click()">Create&nbsp;&nbsp;&nbsp;
+                        <i style="font-size: 0.9em" class="fa fa-plus-circle"></i>
+                    </PrimaryButton> 
+                    form on this website.<br />
+                    <ol>
+                        <li>Fill the form</li>
+                        <li>Click the <PrimaryButton>DOWNLOAD</PrimaryButton> button</li>
+                        <li>Extract the zip file</li>
+                    </ol><br />
+                    This wil not only setup a Maven project for you, but it will also setup all the dependencies needed for Arcano and everything you need to compile and run
+                    your project.
+                </li>
+            </ul>
+            <br />
+            After making a new Maven project, you'll have to add Arcano as a dependency to your project.<br />
+            To do so you need to modify your <b>pon.xml</b> file.<br />
             First you need to define the repository where the library releases are published.
             The current repository is hosted on github.<br />
-            Here's what you need to add to your <b>pom.xml</b> file:<br />
             <coding language="xml">&lt;repository&gt;
-    &lt;id&gt;com.github.tncrazvan.Arcano&lt;/id&gt;
+    &lt;id&gt;com.github.tncrazvan.arcano&lt;/id&gt;
+    &lt;name&gt;Arcano&lt;/name&gt;
     &lt;url&gt;https://raw.githubusercontent.com/tncrazvan/Arcano/maven-repository&lt;/url&gt;
 &lt;/repository&gt;</coding><br /><br />
-        After that's done, all you need to do is add the dependency:<br />
+        Then you need to add the dependency:<br />
         <coding language="xml">&lt;dependency&gt;
     &lt;groupId&gt;com.github.tncrazvan&lt;/groupId&gt;
     &lt;artifactId&gt;Arcano&lt;/artifactId&gt;
     &lt;version&gt;1.1.0&lt;/version&gt;
 &lt;dependency&gt;</coding><br /><br />
-            Now build your project once to make sure everything works (if you're using an IDE this will probably also download the sources for you).
+
+            Now you can <b><u>download the dependencies</u></b>.<br />
+            <ul class="collection">
+                <li class="collection-item">
+                    If you're using NetBeans you can simply <b>Build</b> your project, it will download your dependencies automatically.
+                </li>
+                <li class="collection-item">
+                    If you're using the terminal, navigate to wherever your <a>pom.xml</a> file is located and run
+                    <coding language="bash">mvn install</coding><br />
+                    This will download all your dependencies.
+                </li>
+                <li class="collection-item">
+                    If you used the web form you will notice the project you downloaded comes with a few scripts<br />
+                    <coding language="bash">512 Feb 22 14:44 .
+512 Feb 22 14:14 ..
+512 Feb 22 14:05 .git
+163 Feb 22 01:00 .gitignore
+224 Feb 22 01:00 http.json
+ 20 Feb 22 01:00 <u><b>install</b></u>
+512 Feb 22 14:08 java
+ 83 Feb 22 01:00 start
+ 86 Feb 22 01:00 update
+512 Feb 22 01:00 www</coding><br />
+                        Run the <u><b>install</b></u> script to download your dependencies.
+                </li>
+            </ul>
         </li>
         <li class="collection-item">
             <h6>Configuration</h6>
             Before running your server you need to make a configuration file to feed to your server.<br />
-            Make a new <b>http.json</b>, this will contain a json object.<br />
+            Create a new <b>http.json</b> file. This will contain a json object.<br />
             Make sure your object defines the <b>entryPoint</b>, <b>webRoot</b>, <b>port</b> and <b>bindAddress</b> properties, like so:<br />
             <coding language="json">{
     "entryPoint":"index.html",
@@ -61,7 +116,7 @@
         </li>
         <li class="collection-item">
             <h6>Start your server</h6>
-            Make a new instance of the <b>Arcano</b> class.<br />
+            Make a new instance of the <b>Arcano</b> class and define a few http services<br />
             <coding language="java">package com.github.tncrazvan.helloworld;
             
 import com.github.tncrazvan.arcano.Bean.Bean.HttpPath;
@@ -104,22 +159,60 @@ public class HelloWorld {
         });
     }
 }</coding><br /><br />
-            The functional interface passed to the <b>listen</b> method is a method that will run on it's own thread (separated from the Threap Pool Executor)
-            every &lt;whatever number you return&gt; milliseconds.<br />
-            In this example I'm using <coding language="java">so.config.pack</coding> which is a builtin method that packs all the specified <b>.js</b> and <b>.css</b>
-            files in their relative <b>$webRoot/pack/main.js</b> and <b>$webRoot/pack/main.css</b> files.<br /><br />
+            <ul class="collection">
+                <li class="collection-item">
+                    <u>The functional interface</u>
+                    passed to the <b>listen</b> method is a method that will run on it's own thread (separated from the Threap Pool Executor)
+                    every &lt;<b>whatever number you <u>return</u></b>&gt; milliseconds.<br />
+                    In this example I'm using <coding language="java">so.config.pack</coding> which is a builtin method that grabs all entries from a json array in a specific file and packs all the specified <b>.js</b> and <b>.css</b>
+                    files in their relative <b>$webRoot/pack/main.js</b> and <b>$webRoot/pack/main.css</b> files.<br /><br />
 
-            Since I'm returning <coding language="java">return 100L;</coding> this piece of code will run every 100ms.
-            <br /><br />
+                    Since I'm returning <coding language="java">return 100L;</coding> this piece of code will run every 100ms.
+                </li>
+                <li class="collection-item">
+                    <u>The <b>@HttpService</b> beans</u> expose <i>classes</i> and their <i>methods</i> as http services.<br />
+                    These beans are <b>optional for classes</b> but <b>required for the individual methods</b>.<br /><br />
+                    
+                    Specifying an <b>@HttpService</b> bean for a method, as mentioned above, exposes it as an http service and the <b>path</b> attribute specifies 
+                    its <b>http path</b>.<br /><br />
 
-            The next step is installing the dependencies. You can do that by simply navigating into the project's <b>java</b> directory and install them using maven, 
-            so <coding language="bash">cd java</coding>, then <coding language="bash">maven install</coding>, wait for the dependencies to download.<br />
-            Now you can compile your application and run it with <coding language="bash">java -jar target/MyApp-1.0.0.jar</coding><br />
+                    Specifying an <b>@HttpService</b> bean for a class does nothing for the class itself.<br />
+                    The only reason this is possible is because the underlying exposed methods will inherit the class bean and extend it with their own,
+                    for example:
+<coding language="java">@HttpService(path = "/file-manager")
+public class FileManager extends HttpController{
+    @HttpService(path = "/get")
+    public File get(){
+        //retrieve and return file...
+}</coding><br />
+                    The class <b>FileManager</b> uses a bean with a <b>path</b> of <u>/file-manager</u> and its method <b>get</b> uses a bean with a path of <u>/get</u>,
+                    this means the <b>get</b>'s method full path is <u>/file-manager/get</u>, and it can only be called through that <b>http path</b>.<br /><br />
+
+                    This can become useful when exposing number of methods that share part of their paths with eachother.<br />
+
+                    As mentioned above, classes are not required to spcify <b>@HttpService</b> beans, infact you can achieve the same result
+                    without the class bean like this
+<coding language="java">public class FileManager extends HttpController{
+    @HttpService(path = "/file-manager/get")
+    public File get(){
+        //retrieve and return file...
+}</coding><br />
+                This way you're still exposing the <b>get</b> method to the same <b>http path</b> but with one single bean.
+                </li>
+            </ul>
+            
+            <hr />
+
+
+            <br />
+
+            Now you can compile your application and run it (<u>make sure you've installed the dependencies</u>) with <coding language="bash">java -jar target/MyApp-1.0.0.jar</coding><br />
             Alternativaly, if you're using the 
             <PrimaryButton onclick="button_create.click()">Create&nbsp;&nbsp;&nbsp;
                 <i style="font-size: 0.9em" class="fa fa-plus-circle"></i>
             </PrimaryButton> 
-            form on this website, you can run the predefined <b>start</b> script: <coding language="bash">sudo ./start</coding>, it contains a normal maven instruction which will compile and run your server.<br />
+            form on this website, you can run the predefined <b>start</b> script: <coding language="bash">sudo ./start</coding>, 
+            it contains a normal maven instruction which will compile and run your server.<br /><br />
             Either way, you should get an output similar to this:<br />
             <coding language="xml">
 +-----------------+-----------------------------------------------------------------------------------------------------------------------+
@@ -239,7 +332,16 @@ Server started.
     "port": 80,
     "bindAddress": "::",
     "threadPoolSize": 5
-}</coding>
+}</coding><br />
+        </li>
+        <li class="collection-item">
+            <p style="text-align:center">
+                For more information about the library check our 
+                <PrimaryButton>
+                    DOCUMENTATION&nbsp;&nbsp;&nbsp;
+                    <i style="font-size: 0.9em" class="fa fa-book"></i>
+                </PrimaryButton> (not yet available).
+            </p>
         </li>
     </ul><br />
     <Footer></Footer>
