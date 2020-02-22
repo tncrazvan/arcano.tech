@@ -214,7 +214,7 @@ public class FileManager extends HttpController{
             form on this website, you can run the predefined <b>start</b> script: <coding language="bash">sudo ./start</coding>, 
             it contains a normal maven instruction which will compile and run your server.<br /><br />
             Either way, you should get an output similar to this:<br />
-            <coding language="xml">
+            <coding language="xml" style="font-size: 0.8em;">
 +-----------------+-----------------------------------------------------------------------------------------------------------------------+
 | KEY             | VALUE                                                                                                                 |
 +-----------------+-----------------------------------------------------------------------------------------------------------------------+
@@ -315,9 +315,9 @@ public class FileManager extends HttpController{
 |                 | +--------------+--------------------------+-------------------------------------------------------------------------+ |
 |                 | | POST         | /@set/websocketgroup     | com.github.tncrazvan.arcano.Controller.Http.Set.webSocketGroup          | |
 |                 | +--------------+--------------------------+-------------------------------------------------------------------------+ |
-|                 | | WS 404       |                          | com.github.tncrazvan.arcano.Controller.WebSocket.ControllerNotFound.<?> | |
+|                 | | WS 404       |                          | com.github.tncrazvan.arcano.Controller.WebSocket.ControllerNotFound.{?} | |
 |                 | +--------------+--------------------------+-------------------------------------------------------------------------+ |
-|                 | | WS           | /WebSocketGroupApi       | com.github.tncrazvan.arcano.Controller.WebSocket.WebSocketGroupApi.<?>  | |
+|                 | | WS           | /WebSocketGroupApi       | com.github.tncrazvan.arcano.Controller.WebSocket.WebSocketGroupApi.{?}  | |
 |                 | +--------------+--------------------------+-------------------------------------------------------------------------+ |
 +-----------------+-----------------------------------------------------------------------------------------------------------------------+
 Public imports will be packed in background at @webRoot/pack.
