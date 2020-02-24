@@ -14,6 +14,7 @@ public class Starter{
     ClassNotFoundException, URISyntaxException, NoSuchMethodException, InstantiationException, 
     IllegalArgumentException, InvocationTargetException, IllegalAccessException {
         Arcano server = new Arcano(Starter.class.getPackage());
+        server.exposeDefaults();
         server.listen(args,(so) -> {
             so.config.pack(so.config.webRoot,"imports.json");
             return 100L;
