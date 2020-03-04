@@ -1,0 +1,19 @@
+{
+    "name": "tncrazvan/jphp",
+    "description": "A simple library that manages reading STDIN from Java Arcano and serving the outputs",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Razvan",
+            "email": "tangent.jotey@gmail.com"
+        }
+    ],
+    "minimum-stability":"dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "":["."]
+        }
+    }
+}

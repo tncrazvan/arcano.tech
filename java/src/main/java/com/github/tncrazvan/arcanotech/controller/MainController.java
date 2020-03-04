@@ -14,7 +14,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import com.github.tncrazvan.arcano.Bean.Http.HttpService;
 
-public class App extends HttpController implements JsonTools{
+public class MainController extends HttpController implements JsonTools{
     
 
     @HttpService(path = "/")

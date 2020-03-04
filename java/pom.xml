@@ -83,6 +83,7 @@
     </repositories>
     
     <dependencies>
+
         <dependency>
             <groupId>com.github.tncrazvan</groupId>
             <artifactId>Arcano</artifactId>

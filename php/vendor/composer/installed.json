@@ -1,0 +1,39 @@
+[
+    {
+        "name": "tncrazvan/jphp",
+        "version": "v1.0.0",
+        "version_normalized": "1.0.0.0",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/tncrazvan/jphp.git",
+            "reference": "d66c564a5ffe3dfaecc5fa055438fbe6dc48561e"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/tncrazvan/jphp/zipball/d66c564a5ffe3dfaecc5fa055438fbe6dc48561e",
+            "reference": "d66c564a5ffe3dfaecc5fa055438fbe6dc48561e",
+            "shasum": ""
+        },
+        "time": "2020-02-24T22:51:58+00:00",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "psr-4": {
+                "": [
+                    "."
+                ]
+            }
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "MIT"
+        ],
+        "authors": [
+            {
+                "name": "Razvan",
+                "email": "tangent.jotey@gmail.com"
+            }
+        ],
+        "description": "A simple library that manages reading STDIN from Java Arcano and serving the outputs"
+    }
+]
