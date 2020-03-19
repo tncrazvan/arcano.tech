@@ -1,17 +1,18 @@
 {
     "name": "administrator/php",
+    "type": "project",
     "require": {
         "tncrazvan/jphp": "^1.0"
-    },
-    "autoload":{
-        "psr-4":{
-            "":["src"]
-        }
     },
     "authors": [
         {
             "name": "Razvan",
             "email": "tangent.jotey@gmail.com"
         }
-    ]
+    ],
+    "autoload":{
+        "psr-4": {
+            "":["src"]
+        }
+    }
 }

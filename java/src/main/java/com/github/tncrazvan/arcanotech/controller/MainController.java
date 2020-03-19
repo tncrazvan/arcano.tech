@@ -9,36 +9,29 @@ import static com.github.tncrazvan.arcano.Tool.Strings.uuid;
 import com.github.tncrazvan.arcano.Tool.System.ServerFile;
 import com.github.tncrazvan.arcano.Tool.Zip.ZipArchive;
 import com.google.gson.JsonObject;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import com.github.tncrazvan.arcano.Bean.Http.HttpService;
+import com.github.tncrazvan.arcano.Controller.Http.FileService;
 
 public class MainController extends HttpController implements JsonTools{
-    
-
     @HttpService(path = "/")
-    public File main(){
-        return new File(reader.so.config.webRoot,reader.so.config.entryPoint);
-    }
-    
-    @HttpService(path = "")
-    public File empty(){
-        return main();
+    public HttpResponse main() throws IOException, ClassNotFoundException{
+        return new Delegate<FileService>(){{}}.start().main();
     }
 
     @HttpService(path = "/home")
-    public File home(){
+    public HttpResponse home() throws IOException, ClassNotFoundException{
         return main();
     }
     
     @HttpService(path = "/quick")
-    public File quick(){
+    public HttpResponse quick() throws IOException, ClassNotFoundException{
         return main();
     }
     
     @HttpService(path = "/create")
-    public File createGET(){
+    public HttpResponse createGET() throws IOException, ClassNotFoundException{
         return main();
     }
     

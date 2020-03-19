@@ -4,11 +4,10 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit7c307ea8a9761127a1d0ccc8ccaa1c77
+class ComposerStaticInitd255d421b99008976ca94618752b5e06
 {
     public static $fallbackDirsPsr4 = array (
-        0 => __DIR__ . '/../..' . '/src',
-        1 => __DIR__ . '/..' . '/tncrazvan/jphp',
+        0 => __DIR__ . '/..' . '/tncrazvan/jphp',
     );
 
     public static $classMap = array (
@@ -22,8 +21,8 @@ class ComposerStaticInit7c307ea8a9761127a1d0ccc8ccaa1c77
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->fallbackDirsPsr4 = ComposerStaticInit7c307ea8a9761127a1d0ccc8ccaa1c77::$fallbackDirsPsr4;
-            $loader->classMap = ComposerStaticInit7c307ea8a9761127a1d0ccc8ccaa1c77::$classMap;
+            $loader->fallbackDirsPsr4 = ComposerStaticInitd255d421b99008976ca94618752b5e06::$fallbackDirsPsr4;
+            $loader->classMap = ComposerStaticInitd255d421b99008976ca94618752b5e06::$classMap;
 
         }, null, ClassLoader::class);
     }
