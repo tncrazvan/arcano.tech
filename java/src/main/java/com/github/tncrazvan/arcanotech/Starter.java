@@ -24,6 +24,9 @@ public class Starter extends HttpController{
         Arcano server = new Arcano();
         server.expose(Starter.class.getPackage());
         server.expose("GET", "/mytest", php);
-        server.listen(args);
+        server.listen(args,(e) -> {
+            e.config.pack(e.config.webRoot, "imports.json");
+            return 100L;
+        });
     }
 }
