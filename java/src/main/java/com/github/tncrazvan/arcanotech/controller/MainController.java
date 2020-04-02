@@ -1,20 +1,21 @@
 package com.github.tncrazvan.arcanotech.controller;
 
+import static com.github.tncrazvan.arcano.Tool.Encoding.JsonTools.jsonObject;
+import static com.github.tncrazvan.arcano.Tool.Strings.uuid;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import com.github.tncrazvan.arcano.Bean.Http.HttpService;
+import com.github.tncrazvan.arcano.Controller.Http.FileService;
 import com.github.tncrazvan.arcano.Http.HttpController;
 import com.github.tncrazvan.arcano.Http.HttpResponse;
 import com.github.tncrazvan.arcano.Tool.Encoding.JsonTools;
-import static com.github.tncrazvan.arcano.Tool.Encoding.JsonTools.jsonObject;
-
-import static com.github.tncrazvan.arcano.Tool.Strings.uuid;
 import com.github.tncrazvan.arcano.Tool.System.ServerFile;
 import com.github.tncrazvan.arcano.Tool.Zip.ZipArchive;
 import com.google.gson.JsonObject;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import com.github.tncrazvan.arcano.Bean.Http.HttpService;
-import com.github.tncrazvan.arcano.Controller.Http.FileService;
 
-public class MainController extends HttpController implements JsonTools{
+public class MainController extends HttpController {
     @HttpService(path = "/")
     public HttpResponse main() throws IOException, ClassNotFoundException{
         return new Delegate<FileService>(){{}}.start().main();

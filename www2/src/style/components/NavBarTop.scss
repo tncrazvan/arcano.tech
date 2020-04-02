@@ -1,0 +1,23 @@
+.navbar-top {
+   position: fixed;
+   top: 0;
+   left: 0;
+   right: 0;
+   background: transparent;
+   display: grid;
+	grid-template-areas: 
+		'button-list' 
+		'bottom-bar'
+	;
+	
+	.button-list{
+		grid-area: button-list;
+	}
+
+	.navbar-top-bottom-bar{
+		position: relative;
+		grid-area: bottom-bar;
+		margin: 0;
+	}
+	
+}
