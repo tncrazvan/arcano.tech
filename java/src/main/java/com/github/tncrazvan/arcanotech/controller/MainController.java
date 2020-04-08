@@ -91,8 +91,8 @@ public class MainController extends HttpController {
         archive.addEntry(webRoot+"/imports.json", imports, reader.so.config.charset);
         archive.addEntry(webRoot+"/js/app.js", js, reader.so.config.charset);
         archive.addEntry(webRoot+"/css/style.css", css, reader.so.config.charset);
-        archive.addEntry(webRoot+"/pack/main.css", css, reader.so.config.charset);
-        archive.addEntry(webRoot+"/pack/main.js", js, reader.so.config.charset);
+        archive.addEntry(webRoot+"/main.css", css, reader.so.config.charset);
+        archive.addEntry(webRoot+"/main.js", js, reader.so.config.charset);
         archive.make();
         ServerFile f = archive.getFile();
         return new HttpResponse(f).then(() -> {
