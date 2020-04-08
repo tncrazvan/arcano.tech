@@ -89,7 +89,7 @@ public class MainController extends HttpController {
         archive.addEntry("update", update, reader.so.config.charset);
         archive.addEntry("install", install, reader.so.config.charset);
         archive.addEntry(webRoot+"/imports.json", imports, reader.so.config.charset);
-        archive.addEntry(webRoot+"/js/app.json", js, reader.so.config.charset);
+        archive.addEntry(webRoot+"/js/app.js", js, reader.so.config.charset);
         archive.addEntry(webRoot+"/css/style.css", css, reader.so.config.charset);
         archive.addEntry(webRoot+"/pack/main.css", css, reader.so.config.charset);
         archive.addEntry(webRoot+"/pack/main.js", js, reader.so.config.charset);
