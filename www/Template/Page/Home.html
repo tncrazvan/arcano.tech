@@ -129,7 +129,7 @@ import java.security.NoSuchAlgorithmException;
 public class HelloWorld {
 
     @HttpService(path = "/")
-    public class Hello extends HttpController{
+    public static class Hello extends HttpController{
         @HttpService(path = "/hello")
         public String main(){
             return "hello world!";
@@ -137,7 +137,7 @@ public class HelloWorld {
     }
 
     @HttpService(path = "/hello2")
-    public class Hello2 extends HttpController{
+    public static class Hello2 extends HttpController{
         @HttpService(path = "/")
         public String main(){
             return "hello world 2!";
