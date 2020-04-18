@@ -5,8 +5,8 @@
  */
 package $namespace;
 
-import com.github.tncrazvan.arcano.Bean.Http.HttpService;
-import com.github.tncrazvan.arcano.Http.HttpController;
+import com.github.tncrazvan.arcano.bean.http.HttpService;
+import com.github.tncrazvan.arcano.http.HttpController;
 
 /**
  *

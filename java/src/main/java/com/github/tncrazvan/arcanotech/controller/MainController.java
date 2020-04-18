@@ -1,18 +1,18 @@
 package com.github.tncrazvan.arcanotech.controller;
 
-import static com.github.tncrazvan.arcano.Tool.Encoding.JsonTools.jsonObject;
-import static com.github.tncrazvan.arcano.Tool.Strings.uuid;
+import static com.github.tncrazvan.arcano.tool.encoding.JsonTools.jsonObject;
+import static com.github.tncrazvan.arcano.tool.Strings.uuid;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
 
-import com.github.tncrazvan.arcano.Bean.Http.HttpService;
-import com.github.tncrazvan.arcano.Controller.Http.FileService;
-import com.github.tncrazvan.arcano.Http.HttpController;
-import com.github.tncrazvan.arcano.Http.HttpResponse;
-import com.github.tncrazvan.arcano.Tool.Encoding.JsonTools;
-import com.github.tncrazvan.arcano.Tool.System.ServerFile;
-import com.github.tncrazvan.arcano.Tool.Zip.ZipArchive;
+import com.github.tncrazvan.arcano.bean.http.HttpService;
+import com.github.tncrazvan.arcano.controller.http.FileService;
+import com.github.tncrazvan.arcano.http.HttpController;
+import com.github.tncrazvan.arcano.http.HttpResponse;
+import com.github.tncrazvan.arcano.tool.encoding.JsonTools;
+import com.github.tncrazvan.arcano.tool.system.ServerFile;
+import com.github.tncrazvan.arcano.tool.zip.ZipArchive;
 import com.google.gson.JsonObject;
 
 public class MainController extends HttpController {

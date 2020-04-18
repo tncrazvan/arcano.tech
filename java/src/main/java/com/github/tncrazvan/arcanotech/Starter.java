@@ -7,7 +7,7 @@ import java.security.NoSuchAlgorithmException;
 
 import com.github.tncrazvan.arcano.Arcano;
 import com.github.tncrazvan.arcano.SharedObject;
-import com.github.tncrazvan.arcano.Tool.Actions.CompleteAction;
+import com.github.tncrazvan.arcano.tool.action.CompleteAction;
 import com.github.tncrazvan.arcanotech.controller.MainController;
 
 public class Starter{
