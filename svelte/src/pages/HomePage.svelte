@@ -72,8 +72,9 @@ public class Starter{\n\
             <br />
             <br />
             <h1>
-                <Icon style="font-size: 3rem; top: -3px" material="info" />
-                <span style="font-size: 2rem">&nbsp;&nbsp;&nbsp;What is Arcano?</span>
+                <img src="assets/img/logo.png" style="width: 5rem" alt="logo"/>
+                <span style="font-size: 2rem;position:relative;top: -1.3rem">&nbsp;&nbsp;&nbsp;What is Arcano?</span>
+
             </h1>
             <p>
                 Arcano is a lightweight web server written in Java.<br />

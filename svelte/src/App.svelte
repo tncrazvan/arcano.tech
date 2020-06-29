@@ -59,11 +59,11 @@
   }
   /* Custom color theme properties */
   :global(:root) {
-    --f7-theme-color: #2196F3;
+    --f7-theme-color: #93280f;
     --f7-text-theme-color: #f1f1f1;
     --f7-text-color: #16101e;
-    --f7-theme-color-shade: #1E88E5;
-    --f7-theme-color-tint: #2196F3;
+    --f7-theme-color-shade: #93280f;
+    --f7-theme-color-tint: #93280f;
   }
   :global(.hljs){
     background: rgba(0,0,0,0.05);
