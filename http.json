@@ -1,6 +1,6 @@
 {
 	"serverRoot":"java",
-	"webRoot":"www",
+	"webRoot":"svelte/www",
 	"port":80,
 	"bindAddress":"::",
 	"entryPoint":"index.html",
