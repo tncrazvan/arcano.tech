@@ -72,7 +72,7 @@ public class Starter{\n\
             <br />
             <br />
             <h1>
-                <img src="assets/img/Logo.png" style="width: 5rem" alt="logo"/>
+                <img src="assets/img/logo.png" style="width: 5rem" alt="logo"/>
                 <span style="font-size: 2rem;position:relative;top: -1.3rem">&nbsp;&nbsp;&nbsp;What is Arcano?</span>
 
             </h1>
