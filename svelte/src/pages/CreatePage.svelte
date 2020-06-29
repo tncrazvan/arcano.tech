@@ -32,8 +32,8 @@
 		let tmp = {
 			serverRoot: "java",
 			webRoot: webRoot,
-			namespace: namespace.toLocaleLowerCase().replaceAll(/\s+/,""),
-			appname: appname.toLocaleLowerCase().replaceAll(/\s+/,""),
+			namespace: namespace.toLocaleLowerCase().replace(/\s+/g,""),
+			appname: appname.toLocaleLowerCase().replace(/\s+/g,""),
 			port: port,
 			bindAddress: bindAddress,
 			entryPoint: entryPoint,
