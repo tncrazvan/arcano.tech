@@ -215,7 +215,7 @@
 				<ListItem
 					checkbox
 					bind:checked={responseWrapper}
-					title="Send Exceptions"
+					title="Response Wrapper"
 					text="Check this if you want your server to wrap all the response messages in JavaScript Object Notation (JSON)"
 				/>
 			</List>
