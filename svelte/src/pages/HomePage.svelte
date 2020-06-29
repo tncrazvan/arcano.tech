@@ -26,48 +26,32 @@ mvn archetype:generate\n\\\
     \"bindAddress\": \"::\"\n\
 }";
 
-	let event_listener = "package com.github.tncrazvan.helloworld;\n\
+	let event_listener = "package com.company.department.myapp;\n\
 \n\
-import com.github.tncrazvan.arcano.Bean.Bean.HttpPath;\n\
-import com.github.tncrazvan.arcano.Http.HttpController;\n\
 import com.github.tncrazvan.arcano.Arcano;\n\
-import java.io.IOException;\n\
-import java.net.URISyntaxException;\n\
-import java.security.NoSuchAlgorithmException;\n\
+import com.github.tncrazvan.arcano.SharedObject;\n\
+import com.github.tncrazvan.arcano.http.HttpResponse;\n\
+import com.github.tncrazvan.arcano.tool.system.ServerFile;\n\
 \n\
-public class HelloWorld {\n\
+public class Starter{\n\
+    public static void main(final String[] args) {\n\
+        Arcano server = new Arcano();\n\
 \n\
-    @HttpService(path = \"/\")\n\
-    public static class Hello extends HttpController{\n\
-        @HttpService(path = \"/hello\")\n\
-        public String main(){\n\
-            return \"hello world!\";\n\
-        }\n\
-    }\n\
-\n\
-    @HttpService(path = \"/hello2\")\n\
-    public static class Hello2 extends HttpController{\n\
-        @HttpService(path = \"/\")\n\
-        public String main(){\n\
-            return \"hello world 2!\";\n\
-        }\n\
-\n\
-        @HttpService(path = \"/name\")\n\
-        public String name(){\n\
-            return \"hello, my name is Arcano!\";\n\
-        }\n\
-    }\n\
-\n\
-    public static void main(final String[] args) throws IOException, NoSuchAlgorithmException,\n\
-    ClassNotFoundException, URISyntaxException, NoSuchMethodException, InstantiationException,\n\
-    IllegalArgumentException, InvocationTargetException, IllegalAccessException {\n\
-        Arcano server = new Arcano(Starter.class.getPackage());\n\
-        server.listen(args,(so) -> {\n\
-            so.config.pack(so.config.webRoot,\"imports.json\");\n\
-            return 100L;\n\
+        server.addHttpEventListener(\"*\",\"@404\",e->{\n\
+            ServerFile file = new ServerFile(e.reader.so.config.webRoot,String.join(\"/\",e.reader.location));\n\
+            if(file.exists())\n\
+                return new HttpResponse(file);\n\
+            else return SharedObject.RESPONSE_NOT_FOUND;\n\
         });\n\
+\n\
+        server.addHttpEventListener(\"GET\",\"/test\",e->{\n\
+            return \"this is a test!\";\n\
+        });\n\
+\n\
+        server.listen(args);\n\
     }\n\
-}";
+}\n\
+";
 
     function create(){
         navigate("/create");
@@ -199,7 +183,7 @@ public class HelloWorld {\n\
                 </li>
                 <li class="collection-item">
                     <h4>Start your server</h4>
-                    Make a new instance of the <b>Arcano</b> class and define a few http services<br />
+                    Make a new instance of the <b>Arcano</b> class and define a few http event listeners<br />
                     <Coding language="java">{event_listener}</Coding><br /><br />
 
                     <br />
@@ -209,7 +193,8 @@ public class HelloWorld {\n\
                     <Button style="display: inline-block" onClick={create} >Create&nbsp;&nbsp;&nbsp;
                         <Icon material="add_circle" />
                     </Button> 
-                    form on this website, you can run the predefined <b>start</b> script: <Coding language="bash">sudo ./start</Coding>, 
+                    form on this website, you can run the predefined <b>start</b> script: 
+                    <Coding language="bash">sudo ./start</Coding>
                     it contains a normal maven instruction which will compile and run your server.<br /><br />
                 </li>
             </ul><hr />
