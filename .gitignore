@@ -10,3 +10,4 @@ java/target
 java/.settings
 www/pack/
 nohup.out
+svelte/src/shared/
