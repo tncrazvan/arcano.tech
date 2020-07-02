@@ -10,4 +10,5 @@ java/target
 java/.settings
 www/pack/
 nohup.out
+package-lock.json
 svelte/src/shared/

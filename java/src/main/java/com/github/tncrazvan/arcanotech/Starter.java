@@ -5,11 +5,10 @@ import java.io.IOException;
 
 import com.github.tncrazvan.arcano.Arcano;
 import com.github.tncrazvan.arcano.SharedObject;
-import com.github.tncrazvan.arcano.http.HttpEvent;
 import com.github.tncrazvan.arcano.http.HttpRequestReader;
 import com.github.tncrazvan.arcano.http.HttpResponse;
 import com.github.tncrazvan.arcano.tool.Strings;
-import com.github.tncrazvan.arcano.tool.action.CompleteAction;
+import com.github.tncrazvan.arcano.tool.action.HttpEventAction;
 import com.github.tncrazvan.arcano.tool.encoding.JsonTools;
 import com.github.tncrazvan.arcano.tool.http.Status;
 import com.github.tncrazvan.arcano.tool.system.ServerFile;
@@ -29,22 +28,22 @@ public class Starter {
         server.listen(args);
     }
 
-    private static final CompleteAction<Object, HttpEvent> index = e -> {
+    private static final HttpEventAction<Object> index = e -> {
         ServerFile file = new ServerFile(e.reader.so.config.webRoot, e.reader.so.config.entryPoint);
         if(file.exists()) return new HttpResponse(file);
         
-        return SharedObject.RESPONSE_NOT_FOUND;
+        return SharedObject.HTTP_RESPONSE_NOT_FOUND;
     };
 
-    private static final CompleteAction<Object, HttpEvent> eventNotFound = e -> {
+    private static final HttpEventAction<Object> eventNotFound = e -> {
         ServerFile file = new ServerFile(e.reader.so.config.webRoot, String.join("/", e.reader.location));
         if(file.exists()) 
             return new HttpResponse(file);
         
-        return SharedObject.RESPONSE_NOT_FOUND;
+        return SharedObject.HTTP_RESPONSE_NOT_FOUND;
     };
 
-    private static final CompleteAction<Object, HttpEvent> eventCreateZipArchive = e -> {
+    private static final HttpEventAction<Object> eventCreateZipArchive = e -> {
 
         HttpRequestReader reader = e.reader;
         ZipArchive archive;
