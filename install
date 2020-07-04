@@ -1,2 +1,2 @@
 cd java
-mvn install
+mvn clean install -U

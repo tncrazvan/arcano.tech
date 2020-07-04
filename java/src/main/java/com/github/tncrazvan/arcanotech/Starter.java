@@ -85,10 +85,6 @@ public class Starter {
                             .replaceAll("\\$appname", appname);
 
 
-            String update = new String(new ServerFile(e.so.config.webRoot,"assets/metadata/update").read(),e.so.config.charset)
-                            .replaceAll("\\$appname", appname);
-
-
             String install = new String(new ServerFile(e.so.config.webRoot,"assets/metadata/install").read(),e.so.config.charset)
                             .replaceAll("\\$appname", appname);
 
@@ -107,7 +103,6 @@ public class Starter {
             archive.addEntry(serverRoot+"/src/main/java/"+path+"/Starter.java",starter, e.so.config.charset);
             archive.addEntry("http.json", json, e.so.config.charset);
             archive.addEntry("start", start, e.so.config.charset);
-            archive.addEntry("update", update, e.so.config.charset);
             archive.addEntry("install", install, e.so.config.charset);
             archive.make();
             ServerFile f = archive.getFile();
