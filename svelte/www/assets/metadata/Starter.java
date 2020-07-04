@@ -13,7 +13,7 @@ public class Starter{
             ServerFile file = new ServerFile(e.reader.so.config.webRoot,String.join("/",e.reader.location));
             if(file.exists())
                 return new HttpResponse(file);
-            else return SharedObject.RESPONSE_NOT_FOUND;
+            else return SharedObject.HTTP_RESPONSE_NOT_FOUND;
         });
 
         server.addHttpEventListener("GET","/test",e->{
