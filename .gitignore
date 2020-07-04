@@ -12,3 +12,4 @@ www/pack/
 nohup.out
 package-lock.json
 svelte/src/shared/
+svelte/shared/
