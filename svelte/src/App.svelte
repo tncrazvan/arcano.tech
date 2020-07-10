@@ -1,9 +1,9 @@
 <script>
-	import OtherFramework7Styles from './../shared/components/styles/OtherFramework7Styles.svelte';
-	import GridStyles from './../shared/components/styles/GridStyles.svelte';
-	import PaddingStyles from './../shared/components/styles/PaddingStyles.svelte';
-	import MarginStyles from './../shared/components/styles/MarginStyles.svelte';
-	import OtherStyles from './../shared/components/styles/OtherStyles.svelte';
+	import PaddingStyles from './shared/components/styles/PaddingStyles.svelte';
+	import GridStyles from './shared/components/styles/GridStyles.svelte';
+	import OtherFramework7Styles from './shared/components/styles/OtherFramework7Styles.svelte';
+	import MarginStyles from './shared/components/styles/MarginStyles.svelte';
+	import OtherStyles from './shared/components/styles/OtherStyles.svelte';
 	import TopNav from './components/TopNav.svelte';
 	import CreatePage from './pages/CreatePage.svelte';
   import HomePage from './pages/HomePage.svelte';
