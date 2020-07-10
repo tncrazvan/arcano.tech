@@ -10,7 +10,7 @@ public class Starter{
         Arcano server = new Arcano();
 
         server.addHttpEventListener("*","@404",e->{
-            ServerFile file = new ServerFile(e.reader.so.config.webRoot,String.join("/",e.reader.location));
+            ServerFile file = new ServerFile(e.so.config.webRoot,String.join("/",e.request.reader.location));
             if(file.exists())
                 return new HttpResponse(file);
             else return SharedObject.HTTP_RESPONSE_NOT_FOUND;
